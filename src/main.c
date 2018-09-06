@@ -22,8 +22,8 @@ int		main(void)
 		return (-1);
 	if (!(win.win_ptr = mlx_new_window(win.mlx_ptr, WIN_W, WIN_H, "RTv1")))
 		return (-1);
-	if (!(win.img_ptr = mlx_new_image(win.mlx_ptr, WIN_W, WIN_H)))
-		return (-1);
+//	if (!(win.img_ptr = mlx_new_image(win.mlx_ptr, WIN_W, WIN_H)))
+//		return (-1);
 	draw_sphere(&win);
 	mlx_hook(win.win_ptr, 2, (1L << 0), key_hook, &win);
 	mlx_loop(win.mlx_ptr);

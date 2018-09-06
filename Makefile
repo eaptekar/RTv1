@@ -13,8 +13,8 @@
 NAME	= RTv1
 
 CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror -lm
-MLX		= -lmlx -framework OpenGL -framework AppKit
+FLAGS	= -Wall -Wextra -Werror -lm
+MLX		= -lmlx -lXext -lX11#-framework OpenGL -framework AppKit
 LIBFT	= -L$(P_LFT) -lft
 
 SRCS	=	main.c	hooks.c draw.c math.c \

@@ -16,14 +16,14 @@
 # include <mlx.h>
 # include <math.h>
 # include "libft.h"
-# include "mlx_keys_macos.h"
+# include "mlx_keys_linux.h"
 
-# define WIN_W	1920
-# define WIN_H	1080
+# define WIN_W	860
+# define WIN_H	860
 
-# define VW_W	1
-# define VW_H	1
-# define DIST	1
+# define VW_W	1.0
+# define VW_H	1.0
+# define DIST	1.0
 
 # define T_MIN	1.0
 # define T_MAX	1000.0

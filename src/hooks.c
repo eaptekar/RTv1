@@ -16,6 +16,7 @@ int		key_hook(int kcode, t_window *win)
 {
 	if (kcode == K_ESC)
 	{
+		mlx_clear_window(win->mlx_ptr, win->win_ptr);
 		mlx_destroy_image(win->mlx_ptr, win->img_ptr);
 		mlx_destroy_window(win->mlx_ptr, win->win_ptr);
 		exit(1);
