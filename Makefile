@@ -6,18 +6,18 @@
 #    By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/02 15:17:33 by eaptekar          #+#    #+#              #
-#    Updated: 2018/09/05 21:22:06 by eaptekar         ###   ########.fr        #
+#    Updated: 2018/09/07 19:07:40 by eaptekar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= RTv1
 
 CC		= gcc
-FLAGS	= -Wall -Wextra -Werror -lm
-MLX		= -lmlx -lXext -lX11#-framework OpenGL -framework AppKit
+FLAGS	= -g#-Wall -Wextra -Werror
+MLX		= -lmlx -framework OpenGL -framework AppKit
 LIBFT	= -L$(P_LFT) -lft
 
-SRCS	=	main.c	hooks.c draw.c math.c \
+SRCS	=	main.c scene.c hooks.c sphere.c math.c \
 
 SRC_DIR	= src/
 OBJ_DIR	= obj/

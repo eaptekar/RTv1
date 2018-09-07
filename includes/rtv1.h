@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/02 15:20:52 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/05 21:28:59 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/07 21:26:50 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 # include <mlx.h>
 # include <math.h>
 # include "libft.h"
-# include "mlx_keys_linux.h"
+# include "mlx_keys_macos.h"
 
-# define WIN_W	860
-# define WIN_H	860
+# define WIN_W	1080
+# define WIN_H	1080
 
 # define VW_W	1.0
 # define VW_H	1.0
@@ -44,28 +44,34 @@ typedef struct	s_vector
 typedef struct	s_sphere
 {
 	t_vector	center;
-	int			radius;
+	double		radius;
 	int			color;
 }				t_sphere;
+
+typedef struct	s_light
+{
+	int			type;
+	double		intensity;
+	t_vector	ray;
+}				t_light;
 
 typedef struct	s_window
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
-	void		*img_ptr;
-	char		*image;
-	int			bpp;
-	int			size_line;
-	int			endian;
+	int			figures;
+	int			sources;
 }				t_window;
 
 int				key_hook(int kcode, t_window *win);
 int				pixel2image(t_window *win, int x, int y, int color);
-void			draw_sphere(t_window *win);
+void			draw_sphere(t_window *win, t_vector cam, t_sphere *sphere, t_light *light);
 
-
-double			mult_vect(t_vector v1, t_vector v2);
+double			scal_mult(t_vector v1, t_vector v2);
 t_vector		sub_vect(t_vector v1, t_vector v2);
+t_vector		add_vect(t_vector v1, t_vector v2);
 t_vector		num_mult_vec(double num, t_vector v);
+
+void			parse_figures(t_window *win);
 
 #endif
