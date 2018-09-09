@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/02 15:20:52 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/09 14:42:35 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/09 18:26:54 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct	s_sphere
 	t_vector	center;
 	double		radius;
 	int			color;
+	int			shine;
 }				t_sphere;
 
 typedef struct	s_light
@@ -76,7 +77,7 @@ t_vector		num_mult_vec(double num, t_vector v);
 t_vector		get_normal(t_vector v);
 
 void			parse_figures(t_window *win);
-double			compute_light(t_vector point, t_vector normal, t_light *light, int sources);
+double			compute_light(t_vector point, t_vector normal, t_vector ray, t_light *light, int sources, int shine);
 int				get_color(int color, double intensity);
 
 

@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/07 18:16:32 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/09 14:43:17 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/09 18:26:27 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int			raytrace(t_vector cam, t_vector ray, t_sphere *s, t_window *win, t_light *
 	}
 	point = add_vect(cam, num_mult_vec(closest_t, ray));
 	normal = get_normal(sub_vect(point, s[closest_sphere].center));
-	intensity = compute_light(point, normal, light, win->sources);
+	intensity = compute_light(point, normal, num_mult_vec(-1, ray), light, win->sources, s[closest_sphere].shine);
 	color = get_color(s[closest_sphere].color, intensity);
 	return (color);
 }
