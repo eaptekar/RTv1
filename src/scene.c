@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/07 16:57:26 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/07 21:35:00 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/09 14:52:32 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ void	parse_figures(t_window *win)
 	t_light		*light;
 
 	win->figures = 4;
-	sphere[3].center.x = 0;
-	sphere[3].center.y = -1;
-	sphere[3].center.z = 3;
-	sphere[3].radius = 1;
-	sphere[3].color = 0xFF0000;
+	sphere[0].center.x = 0;
+	sphere[0].center.y = -1;
+	sphere[0].center.z = 3;
+	sphere[0].radius = 1;
+	sphere[0].color = 0xFFFFFF;
 	sphere[1].center.x = 2;
 	sphere[1].center.y = 0;
 	sphere[1].center.z = 4;
@@ -64,11 +64,11 @@ void	parse_figures(t_window *win)
 	sphere[2].center.z = 4;
 	sphere[2].radius = 1;
 	sphere[2].color = 0x00FF00;
-	sphere[0].center.x = 0;
-	sphere[0].center.y = -5001;
-	sphere[0].center.z = 0;
-	sphere[0].radius = 5000;
-	sphere[0].color = 0xFFFF00;
+	sphere[3].center.x = 0;
+	sphere[3].center.y = -5001;
+	sphere[3].center.z = 0;
+	sphere[3].radius = 5000;
+	sphere[3].color = 0xFFFF00;
 	cam = parse_camera();
 	light = add_light(win);
 	draw_sphere(win, cam, sphere, light);

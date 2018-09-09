@@ -1,0 +1,4 @@
+*.swp
+obj/
+.DS_Store
+*.o

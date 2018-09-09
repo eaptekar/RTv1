@@ -6,13 +6,23 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/05 18:27:14 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/07 21:31:53 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/09 14:30:18 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
 // strerror(errno) instead -1
+
+t_vector	get_viewport(int x, int y)
+{
+	t_vector	ray;
+
+	ray.x = (x * VW_W) / WIN_W;
+	ray.y = (y * VW_H) / WIN_H;
+	ray.z = DIST;
+	return (ray);
+}
 
 int		main(void)
 {
