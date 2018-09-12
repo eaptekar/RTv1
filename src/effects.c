@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/09 14:43:09 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/12 00:08:33 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/12 20:23:05 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_vector	reflect_ray(t_vector normal, t_vector ray)
 	return (reflect);
 }
 
-double		compute_light(t_vector point, t_vector normal, t_vector ray, t_light *light, t_window *win, int shine, t_sphere *s)
+double		compute_light(t_vector point, t_vector normal, t_vector ray, t_light *light, t_window *win, int shine, t_figure figure)
 {
 	double		intensity;
 	int			i;
@@ -47,8 +47,8 @@ double		compute_light(t_vector point, t_vector normal, t_vector ray, t_light *li
 				l_dir = light[i].ray;
 				t_max = T_MAX;
 			}
-			closest = closest_intersection(win, point, l_dir, s, 0.001, t_max);
-			if (closest.sphere == -1)
+			closest = closest_intersection(point, l_dir, figure, 0.001, t_max);
+			if (closest.figure == -1)
 			{
 				if (scal_prod(normal, l_dir) > 0)
 					intensity += ((light[i].intensity * scal_prod(normal, l_dir)) / (sqrt(scal_prod(normal, normal)) * sqrt(scal_prod(l_dir, l_dir))));
@@ -77,7 +77,7 @@ int			get_color(int color, int reflect_color, double intensity, int state)
 		green = (fmin(255, round((color & 0xFF00) >> 8) * intensity));
 		blue = (fmin(255, round((color & 0xFF)) * intensity));
 	}
-	else if (state == 2)
+	else
 	{
 		red = (fmin(255, ((color & 0xFF0000) >> 16) + ((reflect_color & 0xFF0000) >> 16)));
 		green = (fmin(255, ((color & 0xFF00) >> 8) + ((reflect_color & 0xFF00) >> 8)));
