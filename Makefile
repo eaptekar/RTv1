@@ -6,15 +6,15 @@
 #    By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/02 15:17:33 by eaptekar          #+#    #+#              #
-#    Updated: 2018/09/09 15:09:09 by eaptekar         ###   ########.fr        #
+#    Updated: 2018/09/11 23:07:12 by eaptekar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= RTv1
 
 CC		= gcc
-FLAGS	= -g#-Wall -Wextra -Werror
-MLX		= -lmlx -framework OpenGL -framework AppKit
+FLAGS	=  -g -lm#-Wall -Wextra -Werror
+MLX		= -lmlx -lXext -lX11#-framework OpenGL -framework AppKit
 LIBFT	= -L$(P_LFT) -lft
 
 SRCS	=	main.c scene.c hooks.c sphere.c math.c effects.c \

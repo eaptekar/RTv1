@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/02 15:20:52 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/09 18:26:54 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/12 00:08:49 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 # include <mlx.h>
 # include <math.h>
 # include "libft.h"
-# include "mlx_keys_macos.h"
+# include "mlx_keys_linux.h"
 
-# define WIN_W	1080
-# define WIN_H	1080
+# define WIN_W	640
+# define WIN_H	640
 
 # define VW_W	1.0
 # define VW_H	1.0
@@ -27,6 +27,12 @@
 
 # define T_MIN	1.0
 # define T_MAX	1000.0
+
+typedef struct	s_closest
+{
+	int			sphere;
+	double		t;
+}				t_closest;
 
 typedef struct	s_roots
 {
@@ -47,6 +53,7 @@ typedef struct	s_sphere
 	double		radius;
 	int			color;
 	int			shine;
+	double		reflect;
 }				t_sphere;
 
 typedef struct	s_light
@@ -62,6 +69,9 @@ typedef struct	s_window
 	void		*win_ptr;
 	int			figures;
 	int			sources;
+	int			closest_sphere;
+	int			shadow_sphere;
+	int			recursion_depth;
 }				t_window;
 
 int				key_hook(int kcode, t_window *win);
@@ -77,8 +87,13 @@ t_vector		num_mult_vec(double num, t_vector v);
 t_vector		get_normal(t_vector v);
 
 void			parse_figures(t_window *win);
-double			compute_light(t_vector point, t_vector normal, t_vector ray, t_light *light, int sources, int shine);
-int				get_color(int color, double intensity);
+double			compute_light(t_vector point, t_vector normal, t_vector ray, t_light *light, t_window *win, int shine, t_sphere *s);
+int				get_color(int color, int reflect_color, double intensity, int state);
 
+t_closest		closest_intersection(t_window *win, t_vector cam, t_vector ray, t_sphere *s, double t_min, double t_max);
+
+t_roots			get_roots(t_vector cam, t_vector ray, t_sphere s);
+
+t_vector		reflect_ray(t_vector normal, t_vector ray);
 
 #endif

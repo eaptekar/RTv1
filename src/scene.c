@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/07 16:57:26 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/09 18:36:32 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/12 00:11:39 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,26 +54,31 @@ void	parse_figures(t_window *win)
 	sphere[0].center.z = 4;
 	sphere[0].radius = 1;
 	sphere[0].shine = 500;
+	sphere[0].reflect = 0.2;
 	sphere[0].color = 0xFF0000;
 	sphere[1].center.x = 2;
 	sphere[1].center.y = 0;
 	sphere[1].center.z = 7;
 	sphere[1].radius = 1;
-	sphere[1].shine = 10;
+	sphere[1].shine = -1;
+	sphere[1].reflect = 0.7;
 	sphere[1].color = 0x0000FF;
 	sphere[2].center.x = -1;
 	sphere[2].center.y = 0;
 	sphere[2].center.z = 5;
 	sphere[2].radius = 0.75;
 	sphere[2].shine = 1000;
+	sphere[2].reflect = 0.5;
 	sphere[2].color = 0x00FF00;
 	sphere[3].center.x = 0;
 	sphere[3].center.y = -5001;
 	sphere[3].center.z = 0;
 	sphere[3].radius = 5000;
-	sphere[3].shine = -1;
+	sphere[3].shine = 100;
+	sphere[3].reflect = 0;
 	sphere[3].color = 0xFFFF00;
 	cam = parse_camera();
 	light = add_light(win);
+	win->recursion_depth = 3;
 	draw_sphere(win, cam, sphere, light);
 }
