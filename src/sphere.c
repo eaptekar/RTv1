@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/07 18:16:32 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/12 00:11:22 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/14 13:40:36 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_closest		closest_intersection(t_window *win, t_vector cam, t_vector ray, t_sph
 	t_roots		t;
 
 	closest.t = T_MAX;
-	closest.sphere = -1;
+	closest.figure = -1;
 	i = 0;
 	while (i < win->figures)
 	{
@@ -50,12 +50,12 @@ t_closest		closest_intersection(t_window *win, t_vector cam, t_vector ray, t_sph
 		if (t.t1 < closest.t && (t.t1 < t_max && t.t1 > t_min))
 		{
 			closest.t = t.t1;
-			closest.sphere = i;
+			closest.figure = i;
 		}
 		if (t.t2 < closest.t && (t.t2 < t_max && t.t2 > t_min))
 		{
 			closest.t = t.t2;
-			closest.sphere = i;
+			closest.figure = i;
 		}
 		i++;
 	}
@@ -74,16 +74,16 @@ int			raytrace(t_vector cam, t_vector ray, t_sphere *s, t_window *win, t_light *
 	t_vector	reflect;
 
 	closest = closest_intersection(win, cam, ray, s, t_min, t_max);
-	if (closest.sphere == -1)
+	if (closest.figure == -1)
 	{
 		color = 0x000000;
 		return (color);
 	}
 	point = add_vect(cam, num_mult_vec(closest.t, ray));
-	normal = get_normal(sub_vect(point, s[closest.sphere].center));
-	intensity = compute_light(point, normal, num_mult_vec(-1, ray), light, win, s[closest.sphere].shine, s);
-	color = get_color(s[closest.sphere].color, s[closest.sphere].color, intensity, 1);
-	r = s[closest.sphere].reflect;
+	normal = get_normal(sub_vect(point, s[closest.figure].center));
+	intensity = compute_light(point, normal, num_mult_vec(-1, ray), light, win, s[closest.figure].shine, s);
+	color = get_color(s[closest.figure].color, s[closest.figure].color, intensity, 1);
+	r = s[closest.figure].reflect;
 	if (depth <= 0 || r <= 0)
 		return (color);
 	reflect = reflect_ray(normal, num_mult_vec(-1, ray));

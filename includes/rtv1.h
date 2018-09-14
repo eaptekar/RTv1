@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/02 15:20:52 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/12 00:08:49 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/14 14:59:37 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@
 # include <mlx.h>
 # include <math.h>
 # include "libft.h"
-# include "mlx_keys_linux.h"
+# include "mlx_keys_macos.h"
 
-# define WIN_W	640
-# define WIN_H	640
+# include <stdio.h>
+
+# define WIN_W	1080
+# define WIN_H	1080
 
 # define VW_W	1.0
 # define VW_H	1.0
@@ -30,7 +32,7 @@
 
 typedef struct	s_closest
 {
-	int			sphere;
+	int			figure;
 	double		t;
 }				t_closest;
 
@@ -55,6 +57,26 @@ typedef struct	s_sphere
 	int			shine;
 	double		reflect;
 }				t_sphere;
+
+typedef struct	s_plane
+{
+	t_vector	center;
+	t_vector	normal;
+	int			color;
+	int			shine;
+	double		reflect;
+}				t_plane;
+
+typedef struct s_cylinder
+{
+	t_vector	center;
+	t_vector	axis;
+	double		radius;
+	float		maxm;
+	int			color;
+	int			shine;
+	double		reflect;
+}				t_cylinder;
 
 typedef struct	s_light
 {
@@ -95,5 +117,9 @@ t_closest		closest_intersection(t_window *win, t_vector cam, t_vector ray, t_sph
 t_roots			get_roots(t_vector cam, t_vector ray, t_sphere s);
 
 t_vector		reflect_ray(t_vector normal, t_vector ray);
+
+void			draw_plane(t_window *win, t_vector cam, t_plane *plane, t_light *light);
+
+void			draw_cylinder(t_window *win, t_vector cam, t_cylinder *cylinder, t_light *light);
 
 #endif
