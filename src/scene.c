@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/07 16:57:26 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/14 15:37:39 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/14 16:53:07 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,49 +131,112 @@ t_cylinder		*add_cylinder(void)
 	return (cylinder);
 }
 
+t_cone		*add_cone(void)
+{
+	static t_cone		cone[4];
+
+	cone[0].center.x = 0;
+	cone[0].center.y = 0;
+	cone[0].center.z = 6;
+	cone[0].axis.x = 1;
+	cone[0].axis.y = -3;
+	cone[0].axis.z = 6;
+	cone[0].axis = sub_vect(cone[0].axis, cone[0].center);
+	cone[0].axis = get_normal(cone[0].axis);
+	cone[0].k = 0.4;
+	cone[0].minm = 0;	
+	cone[0].maxm = 2;
+	cone[0].shine = -1;
+	cone[0].reflect = 0;
+	cone[0].color = 0xFA78D0;
+	// cone[1].center.x = -2;
+	// cone[1].center.y = 0;
+	// cone[1].center.z = 6;
+	// cone[1].axis.x = -2;
+	// cone[1].axis.y = 1;
+	// cone[1].axis.z = 6;
+	// cone[1].axis = sub_vect(cylinder[1].axis, cylinder[1].center);
+	// cone[1].axis = get_normal(cylinder[1].axis);
+	// cone[1].radius = 0.25;
+	// cone[1].maxm = 2;
+	// cone[1].shine = -1;
+	// cone[1].reflect = 0;
+	// cone[1].color = 0x808080;
+	// cone[2].center.x = -2;
+	// cone[2].center.y = 0;
+	// cone[2].center.z = 10;
+	// cone[2].axis.x = -2;
+	// cone[2].axis.y = 1;
+	// cone[2].axis.z = 10;
+	// cone[2].axis = sub_vect(cylinder[2].axis, cylinder[2].center);
+	// cone[2].axis = get_normal(cylinder[2].axis);
+	// cone[2].radius = 0.25;
+	// cone[2].maxm = 2;
+	// cone[2].shine = -1;
+	// cone[2].reflect = 0;
+	// cone[2].color = 0x808080;
+	// cone[3].center.x = 2;
+	// cone[3].center.y = 0;
+	// cone[3].center.z = 10;
+	// cone[3].axis.x = 2;
+	// cone[3].axis.y = 1;
+	// cone[3].axis.z = 10;
+	// cone[3].axis = sub_vect(cylinder[3].axis, cylinder[3].center);
+	// cone[3].axis = get_normal(cylinder[3].axis);
+	// cone[3].radius = 0.25;
+	// cone[3].maxm = 2;
+	// cone[3].shine = -1;
+	// cone[3].reflect = 0;
+	// cone[3].color = 0x808080;
+	return (cone);
+}
+
 void	parse_figures(t_window *win)
 {
 	t_sphere	sphere[4];
 	t_vector	cam;
 	t_plane		*plane;
 	t_cylinder	*cylinder;
+	t_cone		*cone;
 	t_light		*light;
 
 	win->figures = 4;
-	sphere[0].center.x = 0;
-	sphere[0].center.y = -1;
-	sphere[0].center.z = 4;
-	sphere[0].radius = 1;
+	sphere[0].center.x = 2;
+	sphere[0].center.y = -2;
+	sphere[0].center.z = 6;
+	sphere[0].radius = 0.5;
 	sphere[0].shine = 500;
 	sphere[0].reflect = 0.2;
-	sphere[0].color = 0xFF0000;
-	sphere[1].center.x = 2;
-	sphere[1].center.y = 0;
-	sphere[1].center.z = 7;
-	sphere[1].radius = 1;
+	sphere[0].color = 0x808080;
+	sphere[1].center.x = -2;
+	sphere[1].center.y = -2;
+	sphere[1].center.z = 6;
+	sphere[1].radius = 0.5;
 	sphere[1].shine = -1;
-	sphere[1].reflect = 0.7;
-	sphere[1].color = 0x0000FF;
-	sphere[2].center.x = -1;
-	sphere[2].center.y = 0;
-	sphere[2].center.z = 5;
-	sphere[2].radius = 0.75;
+	sphere[1].reflect = 0;
+	sphere[1].color = 0x808080;
+	sphere[2].center.x = 2;
+	sphere[2].center.y = -2;
+	sphere[2].center.z = 10;
+	sphere[2].radius = 0.5;
 	sphere[2].shine = 1000;
 	sphere[2].reflect = 0.5;
-	sphere[2].color = 0x00FF00;
-	sphere[3].center.x = 0;
-	sphere[3].center.y = -5001;
-	sphere[3].center.z = 0;
-	sphere[3].radius = 5000;
+	sphere[2].color = 0x808080;
+	sphere[3].center.x = -2;
+	sphere[3].center.y = -2;
+	sphere[3].center.z = 10;
+	sphere[3].radius = 0.5;
 	sphere[3].shine = 100;
 	sphere[3].reflect = 0;
-	sphere[3].color = 0xFFFF00;
+	sphere[3].color = 0x808080;
 	cam = parse_camera();
 	plane = add_plane();
 	light = add_light(win);
 	win->recursion_depth = 3;
 	cylinder = add_cylinder();
+	cone = add_cone();
 	// draw_plane(win, cam, plane, light);
 	// draw_sphere(win, cam, sphere, light);
-	draw_cylinder(win, cam, cylinder, light);
+	// draw_cylinder(win, cam, cylinder, light);
+	draw_cone(win, cam, cone, light);
 }

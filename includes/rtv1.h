@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/02 15:20:52 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/14 14:59:37 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/14 16:50:11 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,18 @@ typedef struct s_cylinder
 	double		reflect;
 }				t_cylinder;
 
+typedef struct s_cone
+{
+	t_vector	center;
+	t_vector	axis;
+	double		k;
+	float		maxm;
+	float		minm;
+	int			color;
+	int			shine;
+	double		reflect;
+}				t_cone;
+
 typedef struct	s_light
 {
 	int			type;
@@ -121,5 +133,7 @@ t_vector		reflect_ray(t_vector normal, t_vector ray);
 void			draw_plane(t_window *win, t_vector cam, t_plane *plane, t_light *light);
 
 void			draw_cylinder(t_window *win, t_vector cam, t_cylinder *cylinder, t_light *light);
+
+void			draw_cone(t_window *win, t_vector cam, t_cone *cone, t_light *light);
 
 #endif
