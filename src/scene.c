@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/07 16:57:26 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/14 16:53:07 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/14 17:12:30 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,24 @@ t_light		*add_light(t_window *win)
 	light[0].intensity = 0.2;
 	light[1].type = 2;
 	light[1].intensity = 0.6;
-	light[1].ray.x = 2;
+	light[1].ray.x = 0;
 	light[1].ray.y = 1;
 	light[1].ray.z = 0;
-	light[2].type = 2;
+	light[2].type = 3;
 	light[2].intensity = 0.2;
-	light[2].ray.x = -2;
-	light[2].ray.y = 1;
-	light[2].ray.z = 0;
+	light[2].ray.x = 10;
+	light[2].ray.y = 2;
+	light[2].ray.z = 4;
 	return (light);
 }
 
 t_plane		*add_plane(void)
 {
-	static t_plane		plane[2];
+	static t_plane		plane[3];
 
 	plane[0].center.x = 0;
-	plane[0].center.y = 0;
-	plane[0].center.z = 11;
+	plane[0].center.y = -1;
+	plane[0].center.z = 10;
 	plane[0].normal.x = 0;
 	plane[0].normal.y = 0;
 	plane[0].normal.z = 10;
@@ -56,18 +56,30 @@ t_plane		*add_plane(void)
 	plane[0].normal = get_normal(plane[0].normal);
 	plane[0].shine = 1000;
 	plane[0].reflect = 0;
-	plane[0].color = 0x0000FF;
+	plane[0].color = 0xF0F0F0;
 	plane[1].center.x = 0;
-	plane[1].center.y = -5;
-	plane[1].center.z = 5;
+	plane[1].center.y = 3;
+	plane[1].center.z = 10;
 	plane[1].normal.x = 0;
-	plane[1].normal.y = -4;
-	plane[1].normal.z = 4;
+	plane[1].normal.y = 2;
+	plane[1].normal.z = 10;
 	plane[1].normal = sub_vect(plane[1].normal, plane[1].center);
 	plane[1].normal = get_normal(plane[1].normal);
 	plane[1].shine = 1000;
-	plane[1].reflect = 0.2;
-	plane[1].color = 0xFFFF00;
+	plane[1].reflect = 0;
+	plane[1].color = 0x808080;
+	plane[2].center.x = 0;
+	plane[2].center.y = 0;
+	plane[2].center.z = 15;
+	plane[2].normal.x = 0;
+	plane[2].normal.y = 0;
+	plane[2].normal.z = 14;
+	plane[2].normal = sub_vect(plane[2].normal, plane[2].center);
+	plane[2].normal = get_normal(plane[2].normal);
+	plane[2].shine = -1
+	;
+	plane[2].reflect = 0;
+	plane[2].color = 0x4F4FFD;
 	// printf("%f %f %f\n", plane[1].normal.x, plane[1].normal.y, plane[1].normal.z);
 	return (plane);
 }
@@ -200,7 +212,7 @@ void	parse_figures(t_window *win)
 	t_cone		*cone;
 	t_light		*light;
 
-	win->figures = 4;
+	win->figures = 3;
 	sphere[0].center.x = 2;
 	sphere[0].center.y = -2;
 	sphere[0].center.z = 6;
@@ -235,8 +247,8 @@ void	parse_figures(t_window *win)
 	win->recursion_depth = 3;
 	cylinder = add_cylinder();
 	cone = add_cone();
-	// draw_plane(win, cam, plane, light);
+	draw_plane(win, cam, plane, light);
 	// draw_sphere(win, cam, sphere, light);
 	// draw_cylinder(win, cam, cylinder, light);
-	draw_cone(win, cam, cone, light);
+	// draw_cone(win, cam, cone, light);
 }
