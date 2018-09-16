@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/05 20:55:10 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/09 14:00:09 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/16 00:51:33 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,21 @@ t_vector	add_vect(t_vector v1, t_vector v2)
 	res.x = v1.x + v2.x;
 	res.y = v1.y + v2.y;
 	res.z = v1.z + v2.z;
+	return (res);
+}
+
+t_vector	matrix_mult(t_vector vec, double a, double b, double c)
+{
+	t_vector	res;
+	double		ar;
+	double		br;
+	double		cr;
+
+	ar = deg_to_rad(a);
+	br = deg_to_rad(b);
+	cr = deg_to_rad(c);
+	res.x = vec.x * cos(br) * cos(cr) - vec.y * cos(br) * sin(cr) + vec.z * sin(br);
+	res.y = vec.x * (sin(ar) * sin(br) * cos(cr) + cos(ar) * sin(cr)) + vec.y * (cos(ar) * cos(cr) - sin(ar) * sin(br) * sin(cr)) - vec.z * sin(ar) * cos(br);
+	res.z = vec.x * (-cos(ar) * sin(br) * cos(cr) + sin(ar) * sin(cr)) + vec.y * (sin(ar) * cos(cr) + cos(ar) * sin(br) * sin(cr)) + vec.z * cos(ar) * cos(br);
 	return (res);
 }

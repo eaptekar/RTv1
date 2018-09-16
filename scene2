@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/07 16:57:26 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/16 01:38:36 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/16 01:33:02 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ t_light		*add_light(t_window *win)
 
 	win->sources = 2;	
 	light[0].type = 1;
-	light[0].intensity = 0.05;
+	light[0].intensity = 0.105;
 	light[1].type = 2;
-	light[1].intensity = 0.95;
+	light[1].intensity = 1.0;
 	light[1].ray.x = 0;
 	light[1].ray.y = 25;
-	light[1].ray.z = 21;
+	light[1].ray.z = 70;
 	light[2].type = 2;
 	light[2].intensity = 0.4;
 	light[2].ray.x = -5;
@@ -48,10 +48,10 @@ t_plane		*add_plane(void)
 
 	plane[0].center.x = 0;
 	plane[0].center.y = 0;
-	plane[0].center.z = 30;
+	plane[0].center.z = 100;
 	plane[0].normal.x = 0;
 	plane[0].normal.y = 0;
-	plane[0].normal.z = 31;
+	plane[0].normal.z = 101;
 	plane[0].normal = sub_vect(plane[0].normal, plane[0].center);
 	plane[0].normal = get_normal(plane[0].normal);
 	plane[0].shine = 512;
@@ -103,10 +103,10 @@ t_plane		*add_plane(void)
 	plane[4].color = 0xFFFFFF;
 	plane[5].center.x = 0;
 	plane[5].center.y = 0;
-	plane[5].center.z = -30;
+	plane[5].center.z = -100;
 	plane[5].normal.x = 0;
 	plane[5].normal.y = 0;
-	plane[5].normal.z = -29;
+	plane[5].normal.z = -99;
 	plane[5].normal = sub_vect(plane[1].normal, plane[1].center);
 	plane[5].normal = get_normal(plane[1].normal);
 	plane[5].shine = 512;
@@ -281,7 +281,7 @@ void	parse_figures(t_window *win)
 	figure.cone = add_cone();
 	figure.cones = 0;
 	light = add_light(win);
-	win->recursion_depth = 3;
+	win->recursion_depth = 5;
 	win->figures = 8;
 	draw_figure(win, cam, figure, light);
 }
