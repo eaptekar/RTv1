@@ -6,31 +6,11 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/07 16:57:26 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/18 18:07:01 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/18 21:39:32 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
-
-t_vector	parse_camera(void)
-{
-	t_vector	cam;
-
-	cam.x = 0;
-	cam.y = 0;
-	cam.z = 0;
-	return (cam);
-}
-
-t_vector	rotate_camera(void)
-{
-	t_vector	angle;
-
-	angle.x = 0;
-	angle.y = 0;
-	angle.z = 0;
-	return (angle);
-}
 
 t_light		*add_light(void)
 {
@@ -40,14 +20,10 @@ t_light		*add_light(void)
 	light[0].intensity = 0.2;
 	light[1].type = 2;
 	light[1].intensity = 0.4;
-	light[1].ray.x = 3;
-	light[1].ray.y = 1;
-	light[1].ray.z = 0;
+	light[1].ray = set_point(3, 1, 0);
 	light[2].type = 2;
 	light[2].intensity = 0.4;
-	light[2].ray.x = -5;
-	light[2].ray.y = 1.2;
-	light[2].ray.z = 0;
+	light[2].ray = set_point(-5, 1.2, 0);
 	return (light);
 }
 
@@ -55,17 +31,13 @@ t_plane		*add_plane(void)
 {
 	static t_plane		plane[3];
 
-	plane[0].center.x = 0;
-	plane[0].center.y = -1;
-	plane[0].center.z = 10;
-	plane[0].normal.x = 0;
-	plane[0].normal.y = 0;
-	plane[0].normal.z = 10;
-	plane[0].normal = sub(plane[0].normal, plane[0].center);
-	plane[0].normal = get_normal(plane[0].normal);
+	plane[0].center = set_point(0, -1, 10);
+	plane[0].normal = set_point(0, 0, 10);
+	plane[0].normal = get_normal(sub(plane[0].normal, plane[0].center));
 	plane[0].shine = 1000;
 	plane[0].reflect = 0;
 	plane[0].color = 0xACFD69;
+	// plane[0] = parse_plane(1000, 0, 0xACFD69);	
 	plane[1].center.x = 0;
 	plane[1].center.y = 2;
 	plane[1].center.z = 10;
@@ -254,12 +226,12 @@ t_cone		*add_cone(void)
 	return (cone);
 }
 
-void	parse_figures(t_window win)
+void	parse_figures(t_window *win)
 {
 	t_scene		scene;
 
-	scene.cam = parse_camera();
-	scene.angle = rotate_camera();
+	scene.cam = set_point(0, 0, 0);
+	scene.angle = set_point(0, 0, 0);
 	scene.plane = add_plane();
 	scene.planes = 3;
 	scene.sphere = add_sphere();

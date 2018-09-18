@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/02 15:20:52 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/18 18:57:13 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/18 21:37:13 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 # include <errno.h>
 # include "libft.h"
 # include "mlx_keys_macos.h"
-
-# include <stdio.h>  //delete this
 
 # define WIN_W	1080
 # define WIN_H	1080
@@ -108,6 +106,7 @@ typedef struct	s_figure
 {
 	t_vector	point;
 	t_vector	normal;
+	t_vector	ray;
 	int			shine;
 	int			color;
 	double		r;
@@ -137,15 +136,22 @@ typedef struct	s_window
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
+	void		*img_ptr;
+	char		*image;
+	int			bpp;
+	int			size_line;
+	int			end;
 }				t_window;
 
 int				key_hook(int kcode, t_window *win);
 int				exit_redcross(t_window *win);
+int				expose_hook(t_window *win);
 
-void			draw_scene(t_window win, t_scene scene);
-void			parse_figures(t_window win);
+void			draw_scene(t_window *win, t_scene scene);
+void			parse_figures(t_window *win);
 t_roots			get_roots(int i, t_scene s, t_vector cam, t_vector ray);
-t_figure		closest_figure(t_scene scene, t_vector cam, t_vector ray, t_closest closest);
+t_figure		closest_figure(t_scene scene, t_vector cam, \
+	t_vector ray, t_closest closest);
 t_vector		get_viewport(int x, int y);
 t_vector		reflect_ray(t_vector normal, t_vector ray);
 int				get_color(int color, int reflect_color, \
@@ -157,5 +163,9 @@ t_vector		add(t_vector v1, t_vector v2);
 t_vector		mult(double num, t_vector v);
 t_vector		matrix_mult(t_vector vec, t_vector angle);
 t_vector		get_normal(t_vector v);
+
+int				pixel_to_image(t_window *win, int x, int y, int color);
+t_vector		set_point(double x, double y, double z);
+t_plane			parse_plane(int shine, double reflect, int color);
 
 #endif

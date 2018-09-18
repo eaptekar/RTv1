@@ -6,7 +6,7 @@
 #    By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/02 15:17:33 by eaptekar          #+#    #+#              #
-#    Updated: 2018/09/18 18:05:45 by eaptekar         ###   ########.fr        #
+#    Updated: 2018/09/18 21:16:17 by eaptekar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ FLAGS	= -Wall -Wextra -Werror
 MLX		= -lmlx -framework OpenGL -framework AppKit
 LIBFT	= $(P_LFT)libft.a
 
-SRCS	= main.c scene.c raytracing.c math.c color.c hooks.c intersection.c\
+SRCS	= main.c scene.c raytracing.c math.c color.c hooks.c intersection.c parsing.c \
 
 SRC_DIR	= src/
 OBJ_DIR	= obj/
