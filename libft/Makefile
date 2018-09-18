@@ -6,14 +6,14 @@
 #    By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/30 13:42:15 by eaptekar          #+#    #+#              #
-#    Updated: 2018/08/26 18:12:37 by eaptekar         ###   ########.fr        #
+#    Updated: 2018/09/18 15:38:42 by eaptekar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libft.a
 
 CC		= gcc
-FLAGS	= -Wall -Wextra -Werror -c
+FLAGS	= -Wall -Wextra -Werror
 LIB		= ar rc
 RLIB	= ranlib
 
@@ -34,7 +34,8 @@ SRCS = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 
 SRC_DIR = src/
 OBJ_DIR	= obj/
-INC = -I includes/
+I_LFT	= includes/
+INC = -I $(I_LFT)
 SRC = $(addprefix $(SRC_DIR),$(SRCS))
 OBJ = $(addprefix $(OBJ_DIR),$(OBJS))
 
@@ -46,9 +47,9 @@ $(NAME): $(OBJ)
 	@$(LIB) $@ $(OBJ)
 	@$(RLIB) $(NAME)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(I_LFT)libft.h
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(FLAGS) $(INC) $^ -o $@
+	@$(CC) $(FLAGS) $< -o $@ -c $(INC)
 	@echo -n █
 
 clean:

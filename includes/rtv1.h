@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/02 15:20:52 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/16 00:51:50 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/18 18:57:13 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 
 # include <mlx.h>
 # include <math.h>
+# include <string.h>
+# include <errno.h>
 # include "libft.h"
-# include "mlx_keys_linux.h"
+# include "mlx_keys_macos.h"
 
-# include <stdio.h>
+# include <stdio.h>  //delete this
 
-# define WIN_W	640
-# define WIN_H	640
+# define WIN_W	1080
+# define WIN_H	1080
 
 # define VW_W	1.0
 # define VW_H	(VW_W * WIN_H / WIN_W)
@@ -30,17 +32,21 @@
 # define T_MIN	1.0
 # define T_MAX	1000.0
 
+# define ERROR(X)	ft_putendl_exit(X, -1)
+
 typedef struct	s_closest
 {
+	double		t;
 	int			i;
 	int			type;
-	double		t;
 }				t_closest;
 
 typedef struct	s_roots
 {
 	double		t1;
 	double		t2;
+	int			type;
+	int			i;
 }				t_roots;
 
 typedef struct	s_vector
@@ -50,14 +56,12 @@ typedef struct	s_vector
 	double		z;
 }				t_vector;
 
-typedef struct	s_sphere
+typedef struct	s_light
 {
-	t_vector	center;
-	double		radius;
-	int			color;
-	int			shine;
-	double		reflect;
-}				t_sphere;
+	int			type;
+	double		intensity;
+	t_vector	ray;
+}				t_light;
 
 typedef struct	s_plane
 {
@@ -68,7 +72,16 @@ typedef struct	s_plane
 	double		reflect;
 }				t_plane;
 
-typedef struct s_cylinder
+typedef struct	s_sphere
+{
+	t_vector	center;
+	double		radius;
+	int			color;
+	int			shine;
+	double		reflect;
+}				t_sphere;
+
+typedef struct	s_cylinder
 {
 	t_vector	center;
 	t_vector	axis;
@@ -79,7 +92,7 @@ typedef struct s_cylinder
 	double		reflect;
 }				t_cylinder;
 
-typedef struct s_cone
+typedef struct	s_cone
 {
 	t_vector	center;
 	t_vector	axis;
@@ -93,55 +106,56 @@ typedef struct s_cone
 
 typedef struct	s_figure
 {
+	t_vector	point;
+	t_vector	normal;
+	int			shine;
+	int			color;
+	double		r;
+}				t_figure;
+
+typedef struct	s_scene
+{
 	t_plane		*plane;
 	t_sphere	*sphere;
 	t_cylinder	*cylinder;
 	t_cone		*cone;
+	t_light		*light;
 	int			planes;
 	int			spheres;
 	int			cylinders;
 	int			cones;
-}				t_figure;
-
-typedef struct	s_light
-{
-	int			type;
-	double		intensity;
-	t_vector	ray;
-}				t_light;
+	int			figures;
+	int			sources;
+	t_vector	cam;
+	t_vector	angle;
+	int			recursion_depth;
+	double		t_min;
+	double		t_max;
+}				t_scene;
 
 typedef struct	s_window
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
-	int			figures;
-	int			sources;
-	int			recursion_depth;
 }				t_window;
 
 int				key_hook(int kcode, t_window *win);
 int				exit_redcross(t_window *win);
-int				pixel2image(t_window *win, int x, int y, int color);
+
+void			draw_scene(t_window win, t_scene scene);
+void			parse_figures(t_window win);
+t_roots			get_roots(int i, t_scene s, t_vector cam, t_vector ray);
+t_figure		closest_figure(t_scene scene, t_vector cam, t_vector ray, t_closest closest);
 t_vector		get_viewport(int x, int y);
-
-double			scal_prod(t_vector v1, t_vector v2);
-t_vector		sub_vect(t_vector v1, t_vector v2);
-t_vector		add_vect(t_vector v1, t_vector v2);
-t_vector		num_mult_vec(double num, t_vector v);
-t_vector		get_normal(t_vector v);
-
-void			parse_figures(t_window *win);
-int				get_color(int color, int reflect_color, double intensity, int state);
-
-void			draw_figure(t_window *win, t_vector cam, t_figure figure, t_light *light);
-
-t_roots			sphere_intersect(t_vector cam, t_vector ray, t_sphere s);
-t_roots			plane_intersect(t_vector cam, t_vector ray, t_plane p);
-t_roots			cyl_intersect(t_vector cam, t_vector ray, t_cylinder c);
-t_roots			cone_intersect(t_vector cam, t_vector ray, t_cone c);
-
 t_vector		reflect_ray(t_vector normal, t_vector ray);
+int				get_color(int color, int reflect_color, \
+	double intensity, int state);
 
-t_vector		matrix_mult(t_vector vec, double a, double b, double c);
+double			dot(t_vector v1, t_vector v2);
+t_vector		sub(t_vector v1, t_vector v2);
+t_vector		add(t_vector v1, t_vector v2);
+t_vector		mult(double num, t_vector v);
+t_vector		matrix_mult(t_vector vec, t_vector angle);
+t_vector		get_normal(t_vector v);
 
 #endif

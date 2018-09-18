@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/07 16:57:26 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/15 23:51:51 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/18 16:37:02 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,20 @@ t_vector	parse_camera(void)
 	return (cam);
 }
 
-t_light		*add_light(t_window *win)
+t_vector	rotate_camera(void)
+{
+	t_vector	angle;
+
+	angle.x = 0;
+	angle.y = 0;
+	angle.z = 0;
+	return (angle);
+}
+
+t_light		*add_light(void)
 {
 	static t_light		light[3];
 
-	win->sources = 3;	
 	light[0].type = 1;
 	light[0].intensity = 0.2;
 	light[1].type = 2;
@@ -52,7 +61,7 @@ t_plane		*add_plane(void)
 	plane[0].normal.x = 0;
 	plane[0].normal.y = 0;
 	plane[0].normal.z = 10;
-	plane[0].normal = sub_vect(plane[0].normal, plane[0].center);
+	plane[0].normal = sub(plane[0].normal, plane[0].center);
 	plane[0].normal = get_normal(plane[0].normal);
 	plane[0].shine = 1000;
 	plane[0].reflect = 0;
@@ -63,7 +72,7 @@ t_plane		*add_plane(void)
 	plane[1].normal.x = 0;
 	plane[1].normal.y = 1;
 	plane[1].normal.z = 10;
-	plane[1].normal = sub_vect(plane[1].normal, plane[1].center);
+	plane[1].normal = sub(plane[1].normal, plane[1].center);
 	plane[1].normal = get_normal(plane[1].normal);
 	plane[1].shine = 1000;
 	plane[1].reflect = 0;
@@ -74,7 +83,7 @@ t_plane		*add_plane(void)
 	plane[2].normal.x = 0;
 	plane[2].normal.y = 0;
 	plane[2].normal.z = 14;
-	plane[2].normal = sub_vect(plane[2].normal, plane[2].center);
+	plane[2].normal = sub(plane[2].normal, plane[2].center);
 	plane[2].normal = get_normal(plane[2].normal);
 	plane[2].shine = -1;
 	plane[2].reflect = 0;
@@ -162,7 +171,7 @@ t_cylinder		*add_cylinder(void)
 	cylinder[0].axis.x = 2;
 	cylinder[0].axis.y = 1;
 	cylinder[0].axis.z = 6;
-	cylinder[0].axis = sub_vect(cylinder[0].axis, cylinder[0].center);
+	cylinder[0].axis = sub(cylinder[0].axis, cylinder[0].center);
 	cylinder[0].axis = get_normal(cylinder[0].axis);
 	cylinder[0].radius = 0.3;
 	cylinder[0].maxm = 2;
@@ -175,7 +184,7 @@ t_cylinder		*add_cylinder(void)
 	cylinder[1].axis.x = -2;
 	cylinder[1].axis.y = 1;
 	cylinder[1].axis.z = 6;
-	cylinder[1].axis = sub_vect(cylinder[1].axis, cylinder[1].center);
+	cylinder[1].axis = sub(cylinder[1].axis, cylinder[1].center);
 	cylinder[1].axis = get_normal(cylinder[1].axis);
 	cylinder[1].radius = 0.3;
 	cylinder[1].maxm = 2;
@@ -188,7 +197,7 @@ t_cylinder		*add_cylinder(void)
 	cylinder[2].axis.x = 2;
 	cylinder[2].axis.y = 1;
 	cylinder[2].axis.z = 10;
-	cylinder[2].axis = sub_vect(cylinder[2].axis, cylinder[2].center);
+	cylinder[2].axis = sub(cylinder[2].axis, cylinder[2].center);
 	cylinder[2].axis = get_normal(cylinder[2].axis);
 	cylinder[2].radius = 0.3;
 	cylinder[2].maxm = 2;
@@ -201,7 +210,7 @@ t_cylinder		*add_cylinder(void)
 	cylinder[3].axis.x = -2;
 	cylinder[3].axis.y = 1;
 	cylinder[3].axis.z = 10;
-	cylinder[3].axis = sub_vect(cylinder[3].axis, cylinder[3].center);
+	cylinder[3].axis = sub(cylinder[3].axis, cylinder[3].center);
 	cylinder[3].axis = get_normal(cylinder[3].axis);
 	cylinder[3].radius = 0.3;
 	cylinder[3].maxm = 2;
@@ -221,7 +230,7 @@ t_cone		*add_cone(void)
 	cone[0].axis.x = 0;
 	cone[0].axis.y = -1;
 	cone[0].axis.z = 8;
-	cone[0].axis = sub_vect(cone[0].axis, cone[0].center);
+	cone[0].axis = sub(cone[0].axis, cone[0].center);
 	cone[0].axis = get_normal(cone[0].axis);
 	cone[0].k = 0.4;
 	cone[0].minm = 0;	
@@ -232,23 +241,24 @@ t_cone		*add_cone(void)
 	return (cone);
 }
 
-void	parse_figures(t_window *win)
+void	parse_figures(t_window win)
 {
-	t_vector	cam;
-	t_figure	figure;
-	t_light		*light;
+	t_scene		scene;
 
-	cam = parse_camera();
-	figure.plane = add_plane();
-	figure.planes = 3;
-	figure.sphere = add_sphere();
-	figure.spheres = 9;
-	figure.cylinder = add_cylinder();
-	figure.cylinders = 4;
-	figure.cone = add_cone();
-	figure.cones = 0;
-	light = add_light(win);
-	win->recursion_depth = 3;
-	win->figures = 16;
-	draw_figure(win, cam, figure, light);
+	scene.cam = parse_camera();
+	scene.angle = rotate_camera();
+	scene.plane = add_plane();
+	scene.planes = 3;
+	scene.sphere = add_sphere();
+	scene.spheres = 9;
+	scene.cylinder = add_cylinder();
+	scene.cylinders = 4;
+	scene.cone = add_cone();
+	scene.cones = 0;
+	scene.figures = scene.planes + scene.spheres + \
+	scene.cylinders + scene.cones;
+	scene.light = add_light();
+	scene.sources = 3;
+	scene.recursion_depth = 3;
+	draw_scene(win, scene);
 }
