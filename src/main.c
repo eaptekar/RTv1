@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/05 18:27:14 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/19 16:17:04 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/19 19:02:55 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int			main(int argc, char **argv)
 		scene1(&win);
 	else if (*argv[1] == '2')
 		scene2(&win);
+	else if (*argv[1] == '3')
+		scene3(&win);
 	else
 		ERROR("Scene is missing");
 	mlx_hook(win.win_ptr, 17, (1L << 17), exit_redcross, &win);

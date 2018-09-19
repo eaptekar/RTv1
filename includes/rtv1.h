@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/02 15:20:52 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/19 16:11:07 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/19 19:31:51 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,5 +181,7 @@ void			scene1(t_window *win);
 t_light			*light1(void);
 void			scene2(t_window *win);
 t_light			*light2(void);
+void			scene3(t_window *win);
+t_light			*light3(void);
 
 #endif

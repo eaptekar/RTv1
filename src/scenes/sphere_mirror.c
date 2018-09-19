@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/07 16:57:26 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/19 16:40:30 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/19 18:50:54 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ static t_sphere		*add_sphere(void)
 {
 	static t_sphere	sphere[2];
 
-	sphere[0] = init_sphere(set_point(0, 0, 10), 2);
-	sphere[0] = parse_sphere(sphere[0], 512, 1, 0xFFFFFF);
-	sphere[1] = init_sphere(set_point(0, 0, -10), 2);
-	sphere[1] = parse_sphere(sphere[1], 512, 1, 0xFFFFFF);
+	sphere[0] = init_sphere(set_point(0, 0, 10), 3);
+	sphere[0] = parse_sphere(sphere[0], 1000, 0.85, 0x808080);
+	sphere[1] = init_sphere(set_point(0, 0, -10), 3);
+	sphere[1] = parse_sphere(sphere[1], 1000, 0.85, 0x808080);
 
 	return (sphere);
 }
@@ -61,8 +61,8 @@ void				scene2(t_window *win)
 {
 	t_scene		scene;
 
-	scene.cam = set_point(0, 10.01, 1);
-	scene.angle = set_point(50, 10, 40);
+	scene.cam = set_point(0, 12, 0);
+	scene.angle = set_point(55, -10, 45);
 	scene.plane = add_plane();
 	scene.planes = 6;
 	scene.sphere = add_sphere();
@@ -75,6 +75,6 @@ void				scene2(t_window *win)
 	scene.cylinders + scene.cones;
 	scene.light = light2();
 	scene.sources = 2;
-	scene.recursion_depth = 4;
+	scene.recursion_depth = 5;
 	draw_scene(win, scene);
 }

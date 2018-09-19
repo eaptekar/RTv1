@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 15:08:35 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/19 15:21:30 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/19 20:44:01 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ t_cone		init_cone(t_vector center, t_vector axis, double k)
 
 	if (k < 0.05)
 		k = 0.05;
+	else if (k > 4)
+		k = 4;
 	cone.center = center;
 	cone.axis = get_normal(sub(axis, center));
 	cone.k = k;
