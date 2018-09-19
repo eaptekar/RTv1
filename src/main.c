@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/05 18:27:14 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/18 20:21:34 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/19 16:17:04 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ int			pixel_to_image(t_window *win, int x, int y, int color)
 	return (0);
 }
 
-int			main(void)
+int			main(int argc, char **argv)
 {
 	t_window	win;
 
+	if (argc != 2)
+		ERROR("usage: ./RTv1 <num>");
 	if (!(win.mlx_ptr = mlx_init()))
 		ERROR(strerror(errno));
 	if (!(win.win_ptr = mlx_new_window(win.mlx_ptr, WIN_W, WIN_H, "RTv1")))
@@ -54,7 +56,12 @@ int			main(void)
 	win.image = mlx_get_data_addr(win.img_ptr, &(win.bpp), \
 		&(win.size_line), &(win.end));
 	win.bpp = win.bpp >> 3;
-	parse_figures(&win);
+	if (*argv[1] == '1')
+		scene1(&win);
+	else if (*argv[1] == '2')
+		scene2(&win);
+	else
+		ERROR("Scene is missing");
 	mlx_hook(win.win_ptr, 17, (1L << 17), exit_redcross, &win);
 	mlx_hook(win.win_ptr, 12, (1L << 15), expose_hook, &win);
 	mlx_hook(win.win_ptr, 2, (1L << 0), key_hook, &win);

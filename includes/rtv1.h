@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/02 15:20:52 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/18 21:37:13 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/19 16:11:07 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,6 @@ int				exit_redcross(t_window *win);
 int				expose_hook(t_window *win);
 
 void			draw_scene(t_window *win, t_scene scene);
-void			parse_figures(t_window *win);
 t_roots			get_roots(int i, t_scene s, t_vector cam, t_vector ray);
 t_figure		closest_figure(t_scene scene, t_vector cam, \
 	t_vector ray, t_closest closest);
@@ -166,6 +165,21 @@ t_vector		get_normal(t_vector v);
 
 int				pixel_to_image(t_window *win, int x, int y, int color);
 t_vector		set_point(double x, double y, double z);
-t_plane			parse_plane(int shine, double reflect, int color);
+
+t_plane			init_plane(t_vector center, t_vector normal);
+t_sphere		init_sphere(t_vector center, double radius);
+t_cylinder		init_cylinder(t_vector center, t_vector axis, double radius);
+t_cone			init_cone(t_vector center, t_vector axis, double k);
+
+t_plane			parse_plane(t_plane p, int shine, double reflect, int color);
+t_sphere		parse_sphere(t_sphere s, int shine, double reflect, int color);
+t_cylinder		parse_cylinder(t_cylinder c, int shine, \
+	double reflect, int color);
+t_cone			parse_cone(t_cone c, int shine, double reflect, int color);
+
+void			scene1(t_window *win);
+t_light			*light1(void);
+void			scene2(t_window *win);
+t_light			*light2(void);
 
 #endif

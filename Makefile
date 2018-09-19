@@ -6,7 +6,7 @@
 #    By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/02 15:17:33 by eaptekar          #+#    #+#              #
-#    Updated: 2018/09/18 21:16:17 by eaptekar         ###   ########.fr        #
+#    Updated: 2018/09/19 16:09:51 by eaptekar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ FLAGS	= -Wall -Wextra -Werror
 MLX		= -lmlx -framework OpenGL -framework AppKit
 LIBFT	= $(P_LFT)libft.a
 
-SRCS	= main.c scene.c raytracing.c math.c color.c hooks.c intersection.c parsing.c \
+SRCS	=	main.c raytracing.c math.c color.c hooks.c intersection.c parsing.c matrix.c initialization.c \
+			scenes/columns.c scenes/light_columns.c scenes/sphere_mirror.c scenes/light_sphere_mirror.c \
+			
 
 SRC_DIR	= src/
 OBJ_DIR	= obj/
@@ -41,7 +43,7 @@ $(LIBFT):
 	@make -C $(P_LFT)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(I_INC)rtv1.h
-	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR) $(OBJ_DIR)/scenes
 	@$(CC) $(FLAGS) $< -o $@ -c $(INC)
 	@echo -n █
 
