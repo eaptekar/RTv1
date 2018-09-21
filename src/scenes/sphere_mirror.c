@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/07 16:57:26 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/19 18:50:54 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/21 16:59:51 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void				scene2(t_window *win)
 {
 	t_scene		scene;
 
-	scene.cam = set_point(0, 12, 0);
-	scene.angle = set_point(55, -10, 45);
+	scene.cam = set_point(0, 11, 0);
+	scene.angle = set_point(37, -40, 35);
 	scene.plane = add_plane();
 	scene.planes = 6;
 	scene.sphere = add_sphere();
@@ -75,6 +75,6 @@ void				scene2(t_window *win)
 	scene.cylinders + scene.cones;
 	scene.light = light2();
 	scene.sources = 2;
-	scene.recursion_depth = 5;
+	scene.recursion_depth = 6;
 	draw_scene(win, scene);
 }

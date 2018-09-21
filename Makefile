@@ -6,7 +6,7 @@
 #    By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/02 15:17:33 by eaptekar          #+#    #+#              #
-#    Updated: 2018/09/19 19:32:11 by eaptekar         ###   ########.fr        #
+#    Updated: 2018/09/21 19:37:47 by eaptekar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ LIBFT	= $(P_LFT)libft.a
 
 SRCS	=	main.c raytracing.c math.c color.c hooks.c intersection.c parsing.c matrix.c initialization.c \
 			scenes/columns.c scenes/light_columns.c scenes/sphere_mirror.c scenes/light_sphere_mirror.c \
-			scenes/next_scene.c scenes/light_next.c
+			scenes/next_scene.c scenes/light_next.c scenes/three_spheres.c scenes/light_three_spheres.c \
+			scenes/figures.c scenes/light_figures.c \
 
 SRC_DIR	= src/
 OBJ_DIR	= obj/

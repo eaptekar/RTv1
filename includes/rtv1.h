@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/02 15:20:52 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/19 19:31:51 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/21 19:37:25 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@
 # define T_MAX	1000.0
 
 # define ERROR(X)	ft_putendl_exit(X, -1)
+
+typedef struct	s_quaternion
+{
+	double		r;
+	double		i;
+	double		j;
+	double		k;
+}				t_quaternion;
 
 typedef struct	s_closest
 {
@@ -183,5 +191,11 @@ void			scene2(t_window *win);
 t_light			*light2(void);
 void			scene3(t_window *win);
 t_light			*light3(void);
+void			scene4(t_window *win);
+t_light			*light4(void);
+void			scene5(t_window *win);
+t_light			*light5(void);
+
+t_vector		rotate_camera(t_vector vec, t_vector angle);
 
 #endif
