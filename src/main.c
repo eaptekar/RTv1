@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/05 18:27:14 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/21 19:38:04 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/23 15:53:21 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,34 @@ int			pixel_to_image(t_window *win, int x, int y, int color)
 	return (0);
 }
 
+void		choose_scene(char c, t_window *win)
+{
+	if (c == '1')
+		scene1(win);
+	else if (c == '2')
+		scene2(win);
+	else if (c == '3')
+		scene3(win);
+	else if (c == '4')
+		scene4(win);
+	else if (c == '5')
+		scene5(win);
+	else if (c == '6')
+		scene6(win);
+	else if (c == '7')
+		scene7(win);
+	else if (c == '8')
+	{
+		ft_putendl("Set WIN_W to 1920 for better view.");
+		scene8(win);
+	}
+	else	
+	{
+		ft_putendl("Scene is missing");
+		free_exit(win);
+	}
+}
+
 int			main(int argc, char **argv)
 {
 	t_window	win;
@@ -56,19 +84,8 @@ int			main(int argc, char **argv)
 	win.image = mlx_get_data_addr(win.img_ptr, &(win.bpp), \
 		&(win.size_line), &(win.end));
 	win.bpp = win.bpp >> 3;
-	if (*argv[1] == '1')
-		scene1(&win);
-	else if (*argv[1] == '2')
-		scene2(&win);
-	else if (*argv[1] == '3')
-		scene3(&win);
-	else if (*argv[1] == '4')
-		scene4(&win);
-	else if (*argv[1] == '5')
-		scene5(&win);
-	else
-		ERROR("Scene is missing");
-	mlx_hook(win.win_ptr, 17, (1L << 17), exit_redcross, &win);
+	choose_scene(*argv[1], &win);
+	mlx_hook(win.win_ptr, 17, (1L << 17), free_exit, &win);
 	mlx_hook(win.win_ptr, 12, (1L << 15), expose_hook, &win);
 	mlx_hook(win.win_ptr, 2, (1L << 0), key_hook, &win);
 	mlx_loop(win.mlx_ptr);

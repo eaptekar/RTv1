@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.c                                            :+:      :+:    :+:   */
+/*   light_figures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/05 18:38:42 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/23 15:03:35 by eaptekar         ###   ########.fr       */
+/*   Created: 2018/09/21 19:31:37 by eaptekar          #+#    #+#             */
+/*   Updated: 2018/09/23 15:49:30 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int		free_exit(t_window *win)
+t_light		*light6(void)
 {
-	mlx_clear_window(win->mlx_ptr, win->win_ptr);
-	mlx_destroy_image(win->mlx_ptr, win->img_ptr);
-	mlx_destroy_window(win->mlx_ptr, win->win_ptr);
-	exit(1);
-	return (0);
-}
+	static t_light		light[2];
 
-int		expose_hook(t_window *win)
-{
-	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img_ptr, 0, 0);
-	return (0);
-}
-
-int		key_hook(int kcode, t_window *win)
-{
-	if (kcode == K_ESC)
-		free_exit(win);
-	return (0);
+	light[0].type = 1;
+	light[0].intensity = 0;
+	light[1].type = 2;
+	light[1].intensity = 0.8;
+	light[1].ray = set_point(0, 0, -10);
+	return (light);
 }

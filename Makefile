@@ -6,7 +6,7 @@
 #    By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/02 15:17:33 by eaptekar          #+#    #+#              #
-#    Updated: 2018/09/21 19:37:47 by eaptekar         ###   ########.fr        #
+#    Updated: 2018/09/23 15:52:23 by eaptekar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,16 @@ FLAGS	= -Wall -Wextra -Werror
 MLX		= -lmlx -framework OpenGL -framework AppKit
 LIBFT	= $(P_LFT)libft.a
 
-SRCS	=	main.c raytracing.c math.c color.c hooks.c intersection.c parsing.c matrix.c initialization.c \
-			scenes/columns.c scenes/light_columns.c scenes/sphere_mirror.c scenes/light_sphere_mirror.c \
-			scenes/next_scene.c scenes/light_next.c scenes/three_spheres.c scenes/light_three_spheres.c \
-			scenes/figures.c scenes/light_figures.c \
+SRCS	=	main.c		raytracing.c	initialization.c	intersection.c			parsing.c	\
+			math.c		quaternion.c	rotate.c			color.c					hooks.c		\
+			scenes/demo_sphere.c							scenes/light/light_sphere.c			\
+			scenes/demo_cylinder.c							scenes/light/light_cylinder.c		\
+			scenes/demo_cone.c								scenes/light/light_cone.c			\
+			scenes/three_spheres.c							scenes/light/light_three_spheres.c	\
+			scenes/room.c									scenes/light/light_room.c			\
+			scenes/figures.c								scenes/light/light_figures.c		\
+			scenes/columns.c								scenes/light/light_columns.c		\
+			scenes/sphere_mirror.c							scenes/light/light_sphere_mirror.c	\
 
 SRC_DIR	= src/
 OBJ_DIR	= obj/
@@ -44,7 +50,7 @@ $(LIBFT):
 	@make -C $(P_LFT)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(I_INC)rtv1.h
-	@mkdir -p $(OBJ_DIR) $(OBJ_DIR)/scenes
+	@mkdir -p $(OBJ_DIR) $(OBJ_DIR)/scenes $(OBJ_DIR)/scenes/light
 	@$(CC) $(FLAGS) $< -o $@ -c $(INC)
 	@echo -n █
 

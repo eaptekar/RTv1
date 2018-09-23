@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   next_scene.c                                       :+:      :+:    :+:   */
+/*   room.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 19:23:39 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/21 17:11:41 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/23 15:48:09 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static t_cone		*add_cone(void)
 	return (cone);
 }
 
-void				scene3(t_window *win)
+void				scene5(t_window *win)
 {
 	t_scene		scene;
 
@@ -76,7 +76,7 @@ void				scene3(t_window *win)
 	scene.cones = 1;
 	scene.figures = scene.planes + scene.spheres + \
 	scene.cylinders + scene.cones;
-	scene.light = light3();
+	scene.light = light5();
 	scene.sources = 3;
 	scene.recursion_depth = 3;
 	draw_scene(win, scene);

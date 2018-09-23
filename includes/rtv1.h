@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/02 15:20:52 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/21 19:37:25 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/23 16:00:02 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ typedef struct	s_window
 }				t_window;
 
 int				key_hook(int kcode, t_window *win);
-int				exit_redcross(t_window *win);
+int				free_exit(t_window *win);
 int				expose_hook(t_window *win);
 
 void			draw_scene(t_window *win, t_scene scene);
@@ -168,7 +168,6 @@ double			dot(t_vector v1, t_vector v2);
 t_vector		sub(t_vector v1, t_vector v2);
 t_vector		add(t_vector v1, t_vector v2);
 t_vector		mult(double num, t_vector v);
-t_vector		matrix_mult(t_vector vec, t_vector angle);
 t_vector		get_normal(t_vector v);
 
 int				pixel_to_image(t_window *win, int x, int y, int color);
@@ -185,6 +184,12 @@ t_cylinder		parse_cylinder(t_cylinder c, int shine, \
 	double reflect, int color);
 t_cone			parse_cone(t_cone c, int shine, double reflect, int color);
 
+t_vector		rotate_camera(t_vector vec, t_vector angle);
+t_quaternion	new_quat(double r, double i, double j, double k);
+t_quaternion	normal_quat(t_quaternion q);
+t_quaternion	inverse_quat(t_quaternion q);
+t_quaternion	mult_quat(t_quaternion q, t_quaternion p);
+
 void			scene1(t_window *win);
 t_light			*light1(void);
 void			scene2(t_window *win);
@@ -195,7 +200,11 @@ void			scene4(t_window *win);
 t_light			*light4(void);
 void			scene5(t_window *win);
 t_light			*light5(void);
-
-t_vector		rotate_camera(t_vector vec, t_vector angle);
+void			scene6(t_window *win);
+t_light			*light6(void);
+void			scene7(t_window *win);
+t_light			*light7(void);
+void			scene8(t_window *win);
+t_light			*light8(void);
 
 #endif

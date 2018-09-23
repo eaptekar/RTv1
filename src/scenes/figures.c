@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/21 18:39:02 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/21 21:00:50 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/23 15:49:02 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 	
@@ -70,7 +70,7 @@ static t_cone		*add_cone(void)
 	return (cone);
 }
 
-void				scene5(t_window *win)
+void				scene6(t_window *win)
 {
 	t_scene		scene;
 
@@ -86,7 +86,7 @@ void				scene5(t_window *win)
 	scene.cones = 0;
 	scene.figures = scene.planes + scene.spheres + \
 	scene.cylinders + scene.cones;
-	scene.light = light5();
+	scene.light = light6();
 	scene.sources = 2;
 	scene.recursion_depth = 0;
 	draw_scene(win, scene);

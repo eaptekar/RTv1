@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/07 16:57:26 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/19 16:12:35 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/09/23 15:50:01 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,14 @@ static t_cylinder	*add_cylinder(void)
 
 static t_cone		*add_cone(void)
 {
-	static t_cone		cone[4];
+	static t_cone		cone[1];
 
 	cone[0] = init_cone(set_point(3, 1, -2), set_point(3, 0, -2), 0.4);
 	cone[0] = parse_cone(cone[0], -1, 0, 0xFA78D0);
 	return (cone);
 }
 
-void				scene1(t_window *win)
+void				scene7(t_window *win)
 {
 	t_scene		scene;
 
@@ -84,14 +84,14 @@ void				scene1(t_window *win)
 	scene.plane = add_plane();
 	scene.planes = 3;
 	scene.sphere = add_sphere();
-	scene.spheres = 9	;
+	scene.spheres = 9;
 	scene.cylinder = add_cylinder();
 	scene.cylinders = 4;
 	scene.cone = add_cone();
 	scene.cones = 1;
 	scene.figures = scene.planes + scene.spheres + \
 	scene.cylinders + scene.cones;
-	scene.light = light1();
+	scene.light = light7();
 	scene.sources = 3;
 	scene.recursion_depth = 3;
 	draw_scene(win, scene);
