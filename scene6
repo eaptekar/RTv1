@@ -1,0 +1,60 @@
+scene
+{
+	position(0.5 0.5 0)
+	direction(5 5 0)
+	window(1080 1080)
+	recursion(3)
+}
+
+content
+{
+	light
+	{
+		type(1)
+		intensity(0.2)
+	}
+	light
+	{
+		type(2)
+		position(2 1 0)
+		intensity(0.6)
+	}
+	light
+	{
+		type(3)
+		direction(1, 4, 4)
+		intensity(0.2)
+	}
+	plane
+	{
+		position(0 -1 0)
+		direction(0 0 0)
+		shine(700)
+		reflection(0)
+		color(255 255 0)
+	}
+	sphere
+	{
+		position(0 -1 4)
+		radius(1)
+		shine(500)
+		reflection(0.1)
+		color(255 0 0)
+	}
+	sphere
+	{
+		position(2 0 7)
+		radius(1)
+		shine(-1)
+		reflection(0.6)
+		color(0 0 255)
+	}
+	sphere
+	{
+		position(-1.5 -0.25 5.5)
+		radius(0.75)
+		shine(1000)
+		reflection(0.3)
+		color(0 255 0)
+	}
+}
