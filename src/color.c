@@ -33,11 +33,9 @@ t_figure	cone(t_scene scene, t_vector cam, t_vector ray, t_closest closest)
 {
 	t_figure	f;
 	double		m;
-	double		a;
 
 	m = dot(ray, scene.cone[closest.i].axis) * closest.t + dot(sub(cam, \
 		scene.cone[closest.i].center), scene.cone[closest.i].axis);
-	a = m * scene.cone[closest.i].k * scene.cone[closest.i].k;
 	f.point = add(cam, mult(closest.t, ray));
 	f.normal = get_normal(sub(sub(f.point, scene.cone[closest.i].center), \
 		mult((1 + scene.cone[closest.i].k * scene.cone[closest.i].k), \

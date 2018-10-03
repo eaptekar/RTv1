@@ -18,10 +18,11 @@
 # include <string.h>
 # include <errno.h>
 # include "libft.h"
-# include "mlx_keys_macos.h"
+//# include "mlx_keys_macos.h"
+# include "mlx_keys_linux.h"
 
-# define WIN_W	1080
-# define WIN_H	1080
+# define WIN_W	520
+# define WIN_H	520
 
 # define VW_W	1.0
 # define VW_H	(VW_W * WIN_H / WIN_W)

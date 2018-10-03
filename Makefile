@@ -13,8 +13,9 @@
 NAME	= RTv1
 
 CC		= gcc
-FLAGS	= -Wall -Wextra -Werror
-MLX		= -lmlx -framework OpenGL -framework AppKit
+FLAGS	= -Wall -Wextra -Werror -lm
+#MLX		= -lmlx -framework OpenGL -framework AppKit
+MLX  = -lmlx -lXext -lX11
 LIBFT	= $(P_LFT)libft.a
 
 SRCS	=	main.c		raytracing.c	initialization.c	intersection.c			parsing.c	\
