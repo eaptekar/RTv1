@@ -19,7 +19,7 @@ t_scene* parse_file(char* filename)
     file[FILE_BUFF_SIZE - 1] = '\0';   
     cursor = file; 
     t_scene *scene = (t_scene*)malloc(sizeof(t_scene));
-    get_reader(&cursor)(scene, cursor);
+    cursor = get_reader(&cursor)(scene, cursor);
     printf("%d", scene->recursion_depth);
     close(fd);
     return scene;
@@ -43,5 +43,5 @@ char *reader_scene(t_scene* scene, char* cursor)
         ++cursor;
     printf("%c\n", *cursor);
     scene->recursion_depth = 3;
-    return NULL;
+    return cursor;
 }

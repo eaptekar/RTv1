@@ -28,7 +28,7 @@ SRCS	=	main.c		raytracing.c	initialization.c	intersection.c			parsing.c	\
 			scenes/figures.c								scenes/light/light_figures.c		\
 			scenes/columns.c								scenes/light/light_columns.c		\
 			scenes/sphere_mirror.c							scenes/light/light_sphere_mirror.c	\
-			parser.c 
+			parser/parser.c 
 
 SRC_DIR	= src/
 OBJ_DIR	= obj/
@@ -52,7 +52,7 @@ $(LIBFT):
 	@make -C $(P_LFT)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(I_INC)rtv1.h
-	@mkdir -p $(OBJ_DIR) $(OBJ_DIR)/scenes $(OBJ_DIR)/scenes/light
+	@mkdir -p $(OBJ_DIR) $(OBJ_DIR)/parser $(OBJ_DIR)/scenes $(OBJ_DIR)/scenes/light
 	@$(CC) $(FLAGS) $< -o $@ -c $(INC)
 	@echo -n █
 
