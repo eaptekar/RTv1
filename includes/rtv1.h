@@ -15,9 +15,16 @@
 
 # include <mlx.h>
 # include <math.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/uio.h>
 # include <string.h>
 # include <errno.h>
+
 # include "libft.h"
+
 //# include "mlx_keys_macos.h"
 # include "mlx_keys_linux.h"
 

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "rtv1.h"
+#include "parser.h"
 
 t_vector	get_viewport(int x, int y)
 {
@@ -69,8 +70,9 @@ void		choose_scene(char c, t_window *win)
 	}
 }
 
-int			main(int argc, char **argv)
+int			main(/*int argc, char **argv*/void)
 {
+/*
 	t_window	win;
 
 	if (argc != 2)
@@ -89,5 +91,7 @@ int			main(int argc, char **argv)
 	mlx_hook(win.win_ptr, 12, (1L << 15), expose_hook, &win);
 	mlx_hook(win.win_ptr, 2, (1L << 0), key_hook, &win);
 	mlx_loop(win.mlx_ptr);
+*/
+    parse_file("scene6");
 	return (0);
 }
