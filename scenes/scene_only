@@ -1,0 +1,8 @@
+scene
+{
+	position(0 -5 -40)
+	direction(0 -12 0)
+	window(1080 1080)
+	recursion(0)
+}
+

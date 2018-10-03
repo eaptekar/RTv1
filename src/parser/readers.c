@@ -6,13 +6,14 @@
 
 char *reader_scene(t_scene* scene, char* cursor)
 {
-//    char buff[80];
+    char buff[80];
 
     while (ft_isspase(*cursor))
         ++cursor;
-    printf("%c\n", *cursor);
     if (*cursor != '{')
-        ERROR("err");
+        ERROR("reader: bad data");
     scene->recursion_depth = 3;
-    return cursor;
+    find_value(++cursor, buff, "position");
+    printf("%s\n", buff);
+    return cursor + ft_strlen(cursor);
 }

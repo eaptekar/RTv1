@@ -92,6 +92,6 @@ int			main(/*int argc, char **argv*/void)
 	mlx_hook(win.win_ptr, 2, (1L << 0), key_hook, &win);
 	mlx_loop(win.mlx_ptr);
 */
-    parse_file("scene6");
+    parse_file("scenes/scene_only");
 	return (0);
 }
