@@ -13,7 +13,7 @@
 NAME	= RTv1
 
 CC		= gcc
-FLAGS	= -Wall -Wextra -Werror -lm
+FLAGS	= -Wall -Wextra -Werror -lm -g
 #MLX		= -lmlx -framework OpenGL -framework AppKit
 MLX  = -lmlx -lXext -lX11
 LIBFT	= $(P_LFT)libft.a
@@ -43,8 +43,6 @@ OBJ 	= $(addprefix $(OBJ_DIR),$(OBJS))
 OBJS 	= $(SRCS:.c=.o)
 
 all: $(NAME)
-
-Release: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJ)
 	@$(CC) $(FLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(MLX)
