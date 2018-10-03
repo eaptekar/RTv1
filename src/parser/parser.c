@@ -1,12 +1,8 @@
 #include "rtv1.h"
 #include "parser.h"
 
+//just for debug
 #include <stdio.h>
-
-int isspase(char c)
-{
-    return (c == '\t' || c == ' ' || c == '\n');
-}
 
 t_scene* parse_file(char* filename)
 {
@@ -27,7 +23,7 @@ t_scene* parse_file(char* filename)
 
 char* (*get_reader(char** item_name))(t_scene*, char* cursor)
 {
-    while (isspase(**item_name))
+    while (ft_isspase(**item_name))
         ++(*item_name);
     if (!ft_strncmp(*item_name, "scene", 5))
     {
@@ -35,13 +31,4 @@ char* (*get_reader(char** item_name))(t_scene*, char* cursor)
         return &reader_scene;
     }
     return NULL;
-}
-
-char *reader_scene(t_scene* scene, char* cursor)
-{
-    while (isspase(*cursor))
-        ++cursor;
-    printf("%c\n", *cursor);
-    scene->recursion_depth = 3;
-    return cursor;
 }
