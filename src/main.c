@@ -85,17 +85,15 @@ int			main(/*int argc, char **argv*/void)
 	win.image = mlx_get_data_addr(win.img_ptr, &(win.bpp), \
 		&(win.size_line), &(win.end));
 	win.bpp = win.bpp >> 3;
-//	choose_scene(*argv[1], &win);
 
-//    print_scene(parse_file("scenes/scene_sp_li_plane"));
-    draw_scene(&win,*parse_file("scenes/scene_sp_li_plane"));
+    t_scene *scene = parse_file("scenes/demo"); 
+    print_scene(scene);
+    draw_scene(&win,*parse_file("scenes/demo"));
 
 	mlx_hook(win.win_ptr, 17, (1L << 17), free_exit, &win);
 	mlx_hook(win.win_ptr, 12, (1L << 15), expose_hook, &win);
 	mlx_hook(win.win_ptr, 2, (1L << 0), key_hook, &win);
 	mlx_loop(win.mlx_ptr);
-//    print_scene(parse_file("scenes/scene_only"));
-//    print_scene(parse_file("scenes/scene_spheres"));
-//    print_scene(parse_file("scenes/scene_sp_light"));
+    free(scene);
 	return (0);
 }
