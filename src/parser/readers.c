@@ -15,5 +15,11 @@ char *reader_scene(t_scene* scene, char* cursor)
     scene->recursion_depth = 3;
     find_value(++cursor, buff, "position");
     printf("%s\n", buff);
+    t_vector *F = get_vector(buff);
+    printf("F->x %f\n", F->x);
+    printf("F->y %f\n", F->y);
+    printf("F->z %f\n", F->z);
+    find_value(++cursor, buff, "recursion");
+    printf("%s\n", buff);
     return cursor + ft_strlen(cursor);
 }

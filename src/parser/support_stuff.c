@@ -10,27 +10,16 @@ void _getline(char* buff, char* cursor)
     *buff = '\0';
 }
 
-int find_value(char* cursor, char* buff, char* value)
+void cut_br(char* line)
 {
-    char line[LINE_BUFF_SIZE];
-
-    while (*cursor != '}' && *cursor)
-    {
-        while (ft_isspase(*cursor))
-            ++cursor;
-        _getline(line, cursor);
-        if (!ft_strncmp(line, value, ft_strlen(value)))
-        {
-            _getline(buff, line + ft_strlen(value)); 
-            break;
-        }
-        cursor += ft_strlen(line);
-    }
-    if (!(*cursor) || *cursor == '}')
-    {
-        ft_putendl(value);
-        ERROR(": not found");
-    }
-    return 0;
+    while(*(++line) != ')')
+        *(line - 1) = *line;
+    *(line - 1) = '\0';
 }
 
+void cut_to_num(char* buff, char* line)
+{
+    while (*line && *line != ' ')
+        *buff++ = *line++;
+    *buff = '\0';
+}

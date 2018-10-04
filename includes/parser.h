@@ -10,8 +10,14 @@
 t_scene* parse_file(char* filename);
 
 //support stuff
+void _getline(char* line, char* cursor);
+void cut_to_num(char* buff, char* line);
+void cut_br(char* line);
+
+//search
 int find_value(char* cursor, char* buff, char* value);
-t_vector* get_vector(int dim, char* line);
+int get_int_value(char* line);
+t_vector* get_vector(char* line);
 
 //returns pointer to function to read item; 
 char* (*get_reader(char** item_name))(t_scene* scene, char* cursor);
