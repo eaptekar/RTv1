@@ -4,6 +4,15 @@
 //just for debug
 #include <stdio.h>
 
+void set_vval(t_vector *field, char* buff)
+{
+    t_vector *temp;
+    temp = get_vector(buff);
+    *field = *temp;
+    free(temp);
+
+}
+
 char *reader_scene(t_scene* scene, char* cursor)
 {
     char buff[80];
@@ -12,14 +21,10 @@ char *reader_scene(t_scene* scene, char* cursor)
         ++cursor;
     if (*cursor != '{')
         ERROR("reader: bad data");
-    scene->recursion_depth = 3;
+
     find_value(++cursor, buff, "position");
-    printf("%s\n", buff);
-    t_vector *F = get_vector(buff);
-    printf("F->x %f\n", F->x);
-    printf("F->y %f\n", F->y);
-    printf("F->z %f\n", F->z);
-    find_value(++cursor, buff, "recursion");
-    printf("%s\n", buff);
+    set_vval(&(scene->cam), buff);
+    find_value(++cursor, buff, "direction");
+    set_vval(&(scene->angle), buff);
     return cursor + ft_strlen(cursor);
 }
