@@ -22,3 +22,18 @@ void cut_to_num(char* buff, char* line)
     *buff = '\0';
 }
 
+void move_cursor(char **cursor)
+{
+    while (ft_isspase(**cursor))
+        ++(*cursor);
+    if (**cursor != '{')
+        ERROR("reader: bad data");
+}
+
+void next_cbr(char **cursor)
+{
+    while (**cursor != '}')
+        ++(*cursor);
+    ++(*cursor);
+}
+

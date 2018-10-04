@@ -31,10 +31,12 @@ t_vector* get_vector(char* line)
     return vector;
 }
 
-int find_value(char* cursor, char* buff, char* value)
+char* find_value(char* cursor, char* buff, char* value)
 {
     char line[LINE_BUFF_SIZE];
+    char *start;
 
+    start = buff;
     while (*cursor != '}' && *cursor)
     {
         while (ft_isspase(*cursor))
@@ -53,5 +55,5 @@ int find_value(char* cursor, char* buff, char* value)
         ft_putendl(value);
         ERROR(": not found");
     }
-    return 0;
+    return start;
 }

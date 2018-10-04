@@ -13,14 +13,15 @@ t_scene* parse_file(char* filename);
 void _getline(char* line, char* cursor);
 void cut_to_num(char* buff, char* line);
 void cut_br(char* line);
+void move_cursor(char **cursor);
+void next_cbr(char **cursor);
 
 //print
 void print_vector(t_vector* t);
 void print_scene(t_scene* scene);
 
-
 //search
-int find_value(char* cursor, char* buff, char* value);
+char* find_value(char* cursor, char* buff, char* value);
 int get_int_value(char* line);
 t_vector* get_vector(char* line);
 

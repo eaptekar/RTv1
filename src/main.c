@@ -42,34 +42,6 @@ int			pixel_to_image(t_window *win, int x, int y, int color)
 	return (0);
 }
 
-void		choose_scene(char c, t_window *win)
-{
-	if (c == '1')
-		scene1(win);
-	else if (c == '2')
-		scene2(win);
-	else if (c == '3')
-		scene3(win);
-	else if (c == '4')
-		scene4(win);
-	else if (c == '5')
-		scene5(win);
-	else if (c == '6')
-		scene6(win);
-	else if (c == '7')
-		scene7(win);
-	else if (c == '8')
-	{
-		ft_putendl("Set WIN_W to 1920 for better view.");
-		scene8(win);
-	}
-	else	
-	{
-		ft_putendl("Scene is missing");
-		free_exit(win);
-	}
-}
-
 int			main(/*int argc, char **argv*/void)
 {
 	t_window	win;
