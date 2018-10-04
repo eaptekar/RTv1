@@ -22,7 +22,7 @@ void print_plane(t_plane *plane)
     printf("\t\tcenter: ");
     print_vector(&(plane->center));
     printf("\t\tnormal: ");
-    print_vector(&(plane->center));
+    print_vector(&(plane->normal));
     printf("\t\tshine: %d\n", plane->shine);
     printf("\t\tcolor: %d\n", plane->color);
     printf("\t\treflection: %.1f\n", plane->reflect);
