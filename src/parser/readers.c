@@ -66,7 +66,6 @@ char *reader_light(t_scene* scene, char* cursor)
     next_cbr(&cursor);
     scene->light[scene->sources] = *light;
     scene->sources = scene->sources + 1;
-    INC_FIGURES
     free(light);
     return cursor;
 }
