@@ -52,7 +52,7 @@ char *reader_sphere(t_scene* scene, char* cursor)
     find_value(++cursor, buff, "radius");
     sphere->radius = ft_atof(buff);
     find_value(++cursor, buff, "color");
-    sphere->color = ft_atoi(buff);
+    sphere->color = hex_to_int(buff);
     find_value(++cursor, buff, "shine");
     sphere->shine = ft_atoi(buff);
     while (*cursor++ != '}')

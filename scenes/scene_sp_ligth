@@ -1,0 +1,26 @@
+scene
+{
+	position(0 -5 -40)
+    direction(0 -12 0)
+	window_x(1080 1080)
+	window_y(1080 1080)
+	recursion(0)
+}
+sphere
+{
+    position(-1 6 48)
+    radius(1) shine(1000)
+    reflection(0)
+    color(0xFFFFFF)
+}
+ligth
+{
+    type(1)
+    intensity(0.8)
+}
+ligth
+{
+    type(2)
+    intensity(0.8)
+    position(2 3 0)
+}
