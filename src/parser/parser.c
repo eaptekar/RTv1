@@ -1,7 +1,10 @@
 #include "rtv1.h"
 #include "parser.h"
 
-#include <stdio.h>
+#define LEN(X) ft_strlen(X)
+#define CHECK(X) !ft_strncmp(*item_name, X, LEN(X)) && (*item_name += LEN(X))
+#define RET_READER(X) return &reader_##X
+#define ALLOC_ARR(X) (t_##X*)malloc(sizeof(t_##X) * DEFAULT_ITEMS)
 
 t_scene* new_scene(void);
 
@@ -34,26 +37,14 @@ char* (*get_reader(char** item_name))(t_scene*, char* cursor)
 {
     while (ft_isspase(**item_name))
         ++(*item_name);
-    if (!ft_strncmp(*item_name, "scene", 5))
-    {
-        *item_name += 5;
-        return &reader_scene;
-    }
-    if (!ft_strncmp(*item_name, "sphere", 6))
-    {
-        *item_name += 6;
-        return &reader_sphere;
-    }
-    if (!ft_strncmp(*item_name, "light", 5))
-    {
-        *item_name += 5;
-        return &reader_light;
-    }
-    if (!ft_strncmp(*item_name, "plane", 5))
-    {
-        *item_name += 5;
-        return &reader_plane;
-    }
+    if (CHECK("scene"))
+        RET_READER(scene);
+    if (CHECK("sphere"))
+        RET_READER(sphere);
+    if (CHECK("light"))
+        RET_READER(light);
+    if (CHECK("plane"))
+        RET_READER(plane);
     ft_putendl("no reader found"); 
     ERROR(*item_name);
     return NULL;
@@ -64,12 +55,15 @@ t_scene* new_scene(void)
     t_scene *scene;
        
     scene = (t_scene*)malloc(sizeof(t_scene));
-    scene->plane = (t_plane*)malloc(sizeof(t_plane) * DEFAULT_ITEMS);
-    scene->sphere = (t_sphere*)malloc(sizeof(t_sphere) * DEFAULT_ITEMS);
-    scene->cylinder = (t_cylinder*)malloc(sizeof(t_cylinder) * DEFAULT_ITEMS);
-    scene->cone = (t_cone*)malloc(sizeof(t_cone) * DEFAULT_ITEMS);
-    scene->light = (t_light*)malloc(sizeof(t_light) * DEFAULT_ITEMS);
+    scene->plane = ALLOC_ARR(plane);
+    scene->sphere = ALLOC_ARR(sphere);
+    scene->cylinder = ALLOC_ARR(cylinder);
+    scene->cone = ALLOC_ARR(cone);
+    scene->light = ALLOC_ARR(light);
     return scene;
 }
 
-
+#undef LEN 
+#undef CHECK
+#undef RET_READER
+#undef ALLOC_ARR
