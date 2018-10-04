@@ -49,7 +49,11 @@ char* (*get_reader(char** item_name))(t_scene*, char* cursor)
         *item_name += 5;
         return &reader_light;
     }
-
+    if (!ft_strncmp(*item_name, "plane", 5))
+    {
+        *item_name += 5;
+        return &reader_plane;
+    }
     ft_putendl("no reader found"); 
     ERROR(*item_name);
     return NULL;

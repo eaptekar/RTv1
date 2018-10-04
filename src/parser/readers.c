@@ -90,3 +90,31 @@ char *reader_light(t_scene* scene, char* cursor)
     free(light);
     return cursor;
 }
+
+char *reader_plane(t_scene* scene, char* cursor)
+{
+    char buff[LINE_BUFF_SIZE];
+    t_plane *plane = (t_plane*)malloc(sizeof(plane) + 1);
+
+    while (ft_isspase(*cursor))
+        ++cursor;
+    if (*cursor != '{')
+        ERROR("reader: bad data");
+
+    find_value(++cursor, buff, "position");
+    set_vval(&(plane->center), buff);
+    find_value(++cursor, buff, "direction");
+    set_vval(&(plane->normal), buff);
+    find_value(++cursor, buff, "color");
+    plane->color = hex_to_int(buff);
+    find_value(++cursor, buff, "shine");
+    plane->shine = ft_atoi(buff);
+    find_value(++cursor, buff, "reflection");
+    plane->reflect = ft_atof(buff);
+    while (*cursor++ != '}')
+        ;
+    scene->plane[scene->planes] = *plane;
+    scene->planes = scene->planes + 1;
+    free(plane);
+    return cursor;
+}

@@ -94,6 +94,7 @@ int			main(/*int argc, char **argv*/void)
 */
 //    print_scene(parse_file("scenes/scene_only"));
 //    print_scene(parse_file("scenes/scene_spheres"));
-    print_scene(parse_file("scenes/scene_sp_light"));
+//    print_scene(parse_file("scenes/scene_sp_light"));
+    print_scene(parse_file("scenes/scene_sp_li_plane"));
 	return (0);
 }

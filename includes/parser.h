@@ -31,6 +31,7 @@ char* (*get_reader(char** item_name))(t_scene* scene, char* cursor);
 char* reader_scene(t_scene* scene, char* cursor);
 char* reader_sphere(t_scene* scene, char* cursor);
 char* reader_light(t_scene* scene, char* cursor);
+char* reader_plane(t_scene* scene, char* cursor);
 char* reader_cylinder(t_scene* scene, char* cursor);
 
 #endif

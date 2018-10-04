@@ -17,6 +17,18 @@ void print_sphere(t_sphere *sphere)
     printf("\t\treflection: %.1f\n", sphere->reflect);
 }
 
+void print_plane(t_plane *plane)
+{
+    printf("\t\tcenter: ");
+    print_vector(&(plane->center));
+    printf("\t\tnormal: ");
+    print_vector(&(plane->center));
+    printf("\t\tshine: %d\n", plane->shine);
+    printf("\t\tcolor: %d\n", plane->color);
+    printf("\t\treflection: %.1f\n", plane->reflect);
+}
+
+
 void print_light(t_light *light)
 {
     printf("\t\ttype: %d\n", light->type);
@@ -27,6 +39,7 @@ void print_light(t_light *light)
 
 void print_scene(t_scene* scene)
 {
+    printf("Scene:\n");
     printf("position: ");
     print_vector(&scene->cam);
     printf("direction: ");
@@ -39,16 +52,19 @@ void print_scene(t_scene* scene)
         printf("\tSphere %d\n", i);
         print_sphere(&(scene->sphere[i]));
     }
-    printf("sources %d\n", scene->sources);
-    printf("Light %d\n\n", scene->spheres);
+    printf("sources %d\n\n", scene->sources);
     for (int i = 0; i < scene->sources; ++i)
     {
         printf("\tSource %d\n", i);
         print_light(&(scene->light[i]));
     }
-
+    printf("planes %d\n\n", scene->spheres);
+    for (int i = 0; i < scene->sources; ++i)
+    {
+        printf("\tPlane %d\n", i);
+        print_plane(&(scene->plane[i]));
+    }
     printf("cylinders %d\n", scene->cylinders);
     printf("cones %d\n", scene->cones);
-    printf("planes %d\n", scene->planes);
 }
 
