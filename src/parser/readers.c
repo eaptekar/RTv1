@@ -76,7 +76,7 @@ char *reader_light(t_scene* scene, char* cursor)
     find_value(++cursor, buff, "type");
     light->type = ft_atoi(buff);
     find_value(++cursor, buff, "intensity");
-    light->intensity = ft_atoi(buff);
+    light->intensity = ft_atof(buff);
     if (light->type == 2)
     {
         find_value(++cursor, buff, "position");

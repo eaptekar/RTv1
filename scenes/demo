@@ -2,8 +2,8 @@ scene
 {
 	position(0 0.5 0)
     direction(0 0 0)
-	window_x(1080 1080)
-	window_y(1080 1080)
+	window_x(520)
+	window_y(520)
 	recursion(0)
 }
 sphere
