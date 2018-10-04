@@ -13,14 +13,13 @@ t_scene* parse_file(char* filename)
     t_scene* scene;
 
     fd = open(filename, 'r');
-    read(fd, file, FILE_BUFF_SIZE - 2);
-    file[FILE_BUFF_SIZE - 1] = '\0';   
+    file[read(fd, file, FILE_BUFF_SIZE)] = '\0';   
     cursor = file; 
     scene = new_scene();
     while (*cursor)
     {
         cursor = get_reader(&cursor)(scene, cursor);
-        while (ft_isspase(*cursor))
+        while (*cursor && ft_isspase(*cursor))
             ++cursor;
     }
     close(fd);
@@ -36,6 +35,12 @@ char* (*get_reader(char** item_name))(t_scene*, char* cursor)
         *item_name += 5;
         return &reader_scene;
     }
+    if (!ft_strncmp(*item_name, "sphere", 6))
+    {
+        *item_name += 6;
+        return &reader_sphere;
+    }
+    ft_putendl("!"); 
     ERROR(*item_name);
     return NULL;
 }

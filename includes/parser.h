@@ -13,6 +13,8 @@ t_scene* parse_file(char* filename);
 void _getline(char* line, char* cursor);
 void cut_to_num(char* buff, char* line);
 void cut_br(char* line);
+
+//print
 void print_vector(t_vector* t);
 void print_scene(t_scene* scene);
 
@@ -27,6 +29,8 @@ char* (*get_reader(char** item_name))(t_scene* scene, char* cursor);
 
 //readers
 char* reader_scene(t_scene* scene, char* cursor);
+char* reader_sphere(t_scene* scene, char* cursor);
 char* reader_light(t_scene* scene, char* cursor);
 char* reader_cylinder(t_scene* scene, char* cursor);
+
 #endif

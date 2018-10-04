@@ -2,8 +2,8 @@ scene
 {
     position(0 -5 -40)
     direction(0 -12 0)
-    windowx(1080)
-    windowy(1080)
+    window_x(1080)
+    window_y(1080)
     recursion(0)
 }
 

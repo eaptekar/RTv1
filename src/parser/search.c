@@ -24,7 +24,10 @@ t_vector* get_vector(char* line)
         while (*line != ' ' && *line)
             ++line;
         if (!(*line))
+        {
+            printf("1");
             return vector;
+        }
         ++line;
     }
 
