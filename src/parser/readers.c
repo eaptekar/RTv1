@@ -40,7 +40,7 @@ char *reader_scene(t_scene* scene, char* cursor)
 char *reader_sphere(t_scene* scene, char* cursor)
 {
     char buff[LINE_BUFF_SIZE];
-    t_sphere *sphere = (t_sphere*)malloc(sizeof(sphere));
+    t_sphere *sphere = (t_sphere*)malloc(sizeof(sphere) + 1);
 
     while (ft_isspase(*cursor))
         ++cursor;

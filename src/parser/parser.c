@@ -12,7 +12,11 @@ t_scene* parse_file(char* filename)
     char* cursor;
     t_scene* scene;
 
-    fd = open(filename, 'r');
+    if ((fd = open(filename, O_RDONLY)) < 0)
+    {
+        ft_putendl(ft_itoa(fd));
+        ERROR("failed to open scene file");
+    }
     file[read(fd, file, FILE_BUFF_SIZE)] = '\0';   
     cursor = file; 
     scene = new_scene();
@@ -40,7 +44,7 @@ char* (*get_reader(char** item_name))(t_scene*, char* cursor)
         *item_name += 6;
         return &reader_sphere;
     }
-    ft_putendl("!"); 
+    ft_putendl("no reader found"); 
     ERROR(*item_name);
     return NULL;
 }
