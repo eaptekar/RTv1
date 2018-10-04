@@ -72,11 +72,10 @@ void		choose_scene(char c, t_window *win)
 
 int			main(/*int argc, char **argv*/void)
 {
-/*
 	t_window	win;
 
-	if (argc != 2)
-		ERROR("usage: ./RTv1 <num>");
+//	if (argc != 2)
+//		ERROR("usage: ./RTv1 <num>");
 	if (!(win.mlx_ptr = mlx_init()))
 		ERROR(strerror(errno));
 	if (!(win.win_ptr = mlx_new_window(win.mlx_ptr, WIN_W, WIN_H, "RTv1")))
@@ -86,15 +85,17 @@ int			main(/*int argc, char **argv*/void)
 	win.image = mlx_get_data_addr(win.img_ptr, &(win.bpp), \
 		&(win.size_line), &(win.end));
 	win.bpp = win.bpp >> 3;
-	choose_scene(*argv[1], &win);
+//	choose_scene(*argv[1], &win);
+
+//    print_scene(parse_file("scenes/scene_sp_li_plane"));
+    draw_scene(&win,*parse_file("scenes/scene_sp_li_plane"));
+
 	mlx_hook(win.win_ptr, 17, (1L << 17), free_exit, &win);
 	mlx_hook(win.win_ptr, 12, (1L << 15), expose_hook, &win);
 	mlx_hook(win.win_ptr, 2, (1L << 0), key_hook, &win);
 	mlx_loop(win.mlx_ptr);
-*/
 //    print_scene(parse_file("scenes/scene_only"));
 //    print_scene(parse_file("scenes/scene_spheres"));
 //    print_scene(parse_file("scenes/scene_sp_light"));
-    print_scene(parse_file("scenes/scene_sp_li_plane"));
 	return (0);
 }
