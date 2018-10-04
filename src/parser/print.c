@@ -46,6 +46,7 @@ void print_scene(t_scene* scene)
     print_vector(&scene->angle);
     printf("recursion: %d\n", scene->recursion_depth);
     printf("size [%.0fx%.0f]\n", scene->t_min, scene->t_max);
+    printf("figures %d\n", scene->figures);
     printf("spheres %d\n\n", scene->spheres);
     for (int i = 0; i < scene->spheres; ++i)
     {

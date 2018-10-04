@@ -59,6 +59,7 @@ char *reader_sphere(t_scene* scene, char* cursor)
         ;
     scene->sphere[scene->spheres] = *sphere;
     scene->spheres = scene->spheres + 1;
+    scene->figures = scene->figures + 1;
     free(sphere);
     return cursor;
 }
@@ -87,6 +88,7 @@ char *reader_light(t_scene* scene, char* cursor)
         ;
     scene->light[scene->sources] = *light;
     scene->sources = scene->sources + 1;
+    scene->figures = scene->figures + 1;
     free(light);
     return cursor;
 }
@@ -115,6 +117,7 @@ char *reader_plane(t_scene* scene, char* cursor)
         ;
     scene->plane[scene->planes] = *plane;
     scene->planes = scene->planes + 1;
+    scene->figures = scene->figures + 1;
     free(plane);
     return cursor;
 }
