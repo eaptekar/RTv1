@@ -11,7 +11,7 @@ int get_int_value(char* line)
 
 t_vector* get_vector(char* line)
 {
-    t_vector *vector = (t_vector*)malloc(sizeof(t_vector));      
+    t_vector *vector = (t_vector*)malloc(sizeof(t_vector) + 1); 
     char buff[10];
     double *axis;
 
@@ -23,11 +23,8 @@ t_vector* get_vector(char* line)
             *axis++ = ft_atof(buff);
         while (*line != ' ' && *line)
             ++line;
-        if (!(*line))
-        {
-            printf("1");
+        if (!(*line) && 1)
             return vector;
-        }
         ++line;
     }
 
