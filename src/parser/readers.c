@@ -51,8 +51,10 @@ char *reader_sphere(t_scene* scene, char* cursor)
     set_vval(&(sphere->center), buff);
     find_value(++cursor, buff, "radius");
     sphere->radius = ft_atof(buff);
-    find_value(++cursor, buff, "reflection");
-    sphere->reflect = ft_atof(buff);
+    find_value(++cursor, buff, "color");
+    sphere->color = ft_atoi(buff);
+    find_value(++cursor, buff, "shine");
+    sphere->shine = ft_atoi(buff);
     while (*cursor++ != '}')
         ;
     scene->sphere[scene->spheres] = *sphere;
