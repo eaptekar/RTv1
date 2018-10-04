@@ -104,7 +104,7 @@ int				ft_abs(int nb);
 void			ft_swap(void **a, void **b);
 int				get_next_line(const int fd, char **line);
 void			ft_putendl_exit(const char *str, int exit_code);
-long int		hex_to_int(const char *str);
+int		hex_to_int(const char *str);
 double			deg_to_rad(double degree);
 
 #endif
