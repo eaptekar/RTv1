@@ -13,6 +13,9 @@ t_scene* parse_file(char* filename);
 void _getline(char* line, char* cursor);
 void cut_to_num(char* buff, char* line);
 void cut_br(char* line);
+void print_vector(t_vector* t);
+void print_scene(t_scene* scene);
+
 
 //search
 int find_value(char* cursor, char* buff, char* value);

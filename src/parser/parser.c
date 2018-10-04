@@ -1,6 +1,8 @@
 #include "rtv1.h"
 #include "parser.h"
 
+#include <stdio.h>
+
 t_scene* new_scene(void);
 
 t_scene* parse_file(char* filename)
@@ -18,6 +20,8 @@ t_scene* parse_file(char* filename)
     while (*cursor)
     {
         cursor = get_reader(&cursor)(scene, cursor);
+        while (ft_isspase(*cursor))
+            ++cursor;
     }
     close(fd);
     return scene;

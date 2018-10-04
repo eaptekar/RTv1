@@ -26,5 +26,13 @@ char *reader_scene(t_scene* scene, char* cursor)
     set_vval(&(scene->cam), buff);
     find_value(++cursor, buff, "direction");
     set_vval(&(scene->angle), buff);
-    return cursor + ft_strlen(cursor);
+    find_value(++cursor, buff, "recursion");
+    scene->recursion_depth = ft_atoi(buff); 
+    find_value(++cursor, buff, "windowx");
+    scene->t_min = ft_atoi(buff); 
+    find_value(++cursor, buff, "windowy");
+    scene->t_max = ft_atoi(buff); 
+    while (*cursor++ != '}')
+        ;
+    return cursor;
 }
