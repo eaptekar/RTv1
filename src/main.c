@@ -93,6 +93,7 @@ int			main(/*int argc, char **argv*/void)
 	mlx_loop(win.mlx_ptr);
 */
 //    print_scene(parse_file("scenes/scene_only"));
-    print_scene(parse_file("scenes/scene_spheres"));
+//    print_scene(parse_file("scenes/scene_spheres"));
+    print_scene(parse_file("scenes/scene_sp_light"));
 	return (0);
 }

@@ -44,6 +44,12 @@ char* (*get_reader(char** item_name))(t_scene*, char* cursor)
         *item_name += 6;
         return &reader_sphere;
     }
+    if (!ft_strncmp(*item_name, "light", 5))
+    {
+        *item_name += 5;
+        return &reader_light;
+    }
+
     ft_putendl("no reader found"); 
     ERROR(*item_name);
     return NULL;
