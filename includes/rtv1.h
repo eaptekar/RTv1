@@ -146,6 +146,8 @@ typedef struct	s_scene
 	int			recursion_depth;
 	double		t_min;
 	double		t_max;
+	int 		win_w;
+	int	    	win_h;
 }				t_scene;
 
 typedef struct	s_window

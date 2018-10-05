@@ -26,8 +26,8 @@ char *reader_scene(t_scene* scene, char* cursor)
     set_vval(&(scene->cam), FIND("position"));
     set_vval(&(scene->angle), FIND("direction"));
     scene->recursion_depth = ft_atoi(FIND("recursion")); 
-    scene->t_min = ft_atoi(FIND("window_x")); 
-    scene->t_max = ft_atoi(FIND("window_x")); 
+    scene->win_w = ft_atoi(FIND("window_x")); 
+    scene->win_h = ft_atoi(FIND("window_y")); 
     next_cbr(&cursor);
     return cursor;
 }
@@ -61,6 +61,7 @@ char *reader_sphere(t_scene* scene, char* cursor)
     sphere->radius = ft_atof(FIND("radius"));
     sphere->color = hex_to_int(FIND("color"));
     sphere->shine = ft_atoi(FIND("shine"));
+    sphere->reflect = ft_atoi(FIND("reflection"));
     next_cbr(&cursor);
     ADD_FIGURE(sphere);
     INC_COUNTER(sphere);
@@ -132,3 +133,4 @@ char *reader_cone(t_scene* scene, char* cursor)
 #undef ADD_FIGURE
 #undef INC_COUNTER
 #undef INC_FIGURES
+#undef GET_NORM

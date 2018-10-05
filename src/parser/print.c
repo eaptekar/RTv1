@@ -55,8 +55,6 @@ void print_cylinder(t_cylinder *item)
 
 void print_scene(t_scene* scene)
 {
-//    printf("%ld\n", sizeof(double));
-//    printf("%ld\n", sizeof(int));
     printf("Scene:\n");
     printf("Scene:\n");
     printf("position: ");
@@ -64,7 +62,7 @@ void print_scene(t_scene* scene)
     printf("direction: ");
     print_vector(&scene->angle);
     printf("recursion: %d\n", scene->recursion_depth);
-    printf("size [%.0fx%.0f]\n", scene->t_min, scene->t_max);
+    printf("size [%dx%d]\n", scene->win_w, scene->win_h);
     printf("figures %d\n", scene->figures);
     DISPLAY(sphere);
     DISPLAY(plane);
