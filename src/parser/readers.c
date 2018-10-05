@@ -5,6 +5,7 @@
 #define ADD_FIGURE(X) scene->X[scene->X##s] = *X;
 #define INC_COUNTER(X) scene->X##s = scene->X##s + 1;
 #define INC_FIGURES scene->figures = scene->figures + 1;
+#define GET_NORM(X, Y) X->Y = get_normal(sub(X->Y, X->center));
 
 void set_vval(t_vector *field, char* buff)
 {
@@ -75,12 +76,13 @@ char *reader_plane(t_scene* scene, char* cursor)
     move_cursor(&cursor);
     set_vval(&(plane->center), FIND("position"));
     set_vval(&(plane->normal), FIND("direction"));
+    GET_NORM(plane, normal)
     plane->shine = ft_atoi(FIND("shine"));
     plane->reflect = ft_atof(FIND("reflection"));
     plane->color = hex_to_int(FIND("color"));
     next_cbr(&cursor);
-    ADD_FIGURE(plane);
-    INC_COUNTER(plane);
+    ADD_FIGURE(plane)
+    INC_COUNTER(plane)
     INC_FIGURES
     free(plane);
     return cursor;
@@ -94,6 +96,7 @@ char *reader_cylinder(t_scene* scene, char* cursor)
     move_cursor(&cursor);
     set_vval(&(cylinder->center), FIND("position"));
     set_vval(&(cylinder->axis), FIND("direction"));
+    GET_NORM(cylinder, axis)
     cylinder->shine = ft_atoi(FIND("shine"));
     cylinder->radius = ft_atof(FIND("radius"));
     cylinder->reflect = ft_atof(FIND("reflection"));
@@ -114,6 +117,7 @@ char *reader_cone(t_scene* scene, char* cursor)
     move_cursor(&cursor);
     set_vval(&(cone->center), FIND("position"));
     set_vval(&(cone->axis), FIND("direction"));
+    GET_NORM(cone, axis)
     cone->shine = ft_atoi(FIND("shine"));
     cone->reflect = ft_atof(FIND("reflection"));
     cone->color = hex_to_int(FIND("color")); 

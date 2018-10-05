@@ -4,7 +4,7 @@
 #include "rtv1.h"
 
 #define DEFAULT_ITEMS 20
-#define FILE_BUFF_SIZE 1000
+#define FILE_BUFF_SIZE 5000
 #define LINE_BUFF_SIZE 80
 
 t_scene* parse_file(char* filename);
@@ -34,5 +34,6 @@ char* reader_sphere(t_scene* scene, char* cursor);
 char* reader_light(t_scene* scene, char* cursor);
 char* reader_plane(t_scene* scene, char* cursor);
 char* reader_cylinder(t_scene* scene, char* cursor);
+char* reader_cone(t_scene* scene, char* cursor);
 
 #endif
