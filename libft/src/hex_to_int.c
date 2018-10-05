@@ -23,9 +23,9 @@ static int		nibble_to_num(const char nibble)
 	return (0);
 }
 
-long int		hex_to_int(const char *str)
+int		hex_to_int(const char *str)
 {
-	long int	output;
+	int	output;
 	int			digit;
 
 	output = 0;

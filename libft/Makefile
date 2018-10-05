@@ -30,7 +30,7 @@ SRCS = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 	  ft_putendl_fd.c ft_putnbr_fd.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c \
 	  ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_range.c ft_sqrt.c ft_power.c \
 	  ft_abs.c ft_swap.c get_next_line.c ft_putendl_exit.c hex_to_int.c \
-	  deg_to_rad.c
+	  deg_to_rad.c ft_atof.c ft_isspase.c
 
 SRC_DIR = src/
 OBJ_DIR	= obj/

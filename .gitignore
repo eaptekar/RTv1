@@ -2,3 +2,6 @@
 obj/
 .DS_Store
 *.o
+bin/
+*.cbp
+RTv1

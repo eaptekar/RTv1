@@ -15,13 +15,21 @@
 
 # include <mlx.h>
 # include <math.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/uio.h>
 # include <string.h>
 # include <errno.h>
-# include "libft.h"
-# include "mlx_keys_macos.h"
 
-# define WIN_W	1080
-# define WIN_H	1080
+# include "libft.h"
+
+//# include "mlx_keys_macos.h"
+# include "mlx_keys_linux.h"
+
+# define WIN_W	520
+# define WIN_H	520
 
 # define VW_W	1.0
 # define VW_H	(VW_W * WIN_H / WIN_W)
@@ -138,6 +146,8 @@ typedef struct	s_scene
 	int			recursion_depth;
 	double		t_min;
 	double		t_max;
+	int 		win_w;
+	int	    	win_h;
 }				t_scene;
 
 typedef struct	s_window

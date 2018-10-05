@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "rtv1.h"
+#include "parser.h"
 
 t_vector	get_viewport(int x, int y)
 {
@@ -41,40 +42,12 @@ int			pixel_to_image(t_window *win, int x, int y, int color)
 	return (0);
 }
 
-void		choose_scene(char c, t_window *win)
-{
-	if (c == '1')
-		scene1(win);
-	else if (c == '2')
-		scene2(win);
-	else if (c == '3')
-		scene3(win);
-	else if (c == '4')
-		scene4(win);
-	else if (c == '5')
-		scene5(win);
-	else if (c == '6')
-		scene6(win);
-	else if (c == '7')
-		scene7(win);
-	else if (c == '8')
-	{
-		ft_putendl("Set WIN_W to 1920 for better view.");
-		scene8(win);
-	}
-	else	
-	{
-		ft_putendl("Scene is missing");
-		free_exit(win);
-	}
-}
-
-int			main(int argc, char **argv)
+int			main(/*int argc, char **argv*/void)
 {
 	t_window	win;
 
-	if (argc != 2)
-		ERROR("usage: ./RTv1 <num>");
+//	if (argc != 2)
+//		ERROR("usage: ./RTv1 <num>");
 	if (!(win.mlx_ptr = mlx_init()))
 		ERROR(strerror(errno));
 	if (!(win.win_ptr = mlx_new_window(win.mlx_ptr, WIN_W, WIN_H, "RTv1")))
@@ -84,10 +57,15 @@ int			main(int argc, char **argv)
 	win.image = mlx_get_data_addr(win.img_ptr, &(win.bpp), \
 		&(win.size_line), &(win.end));
 	win.bpp = win.bpp >> 3;
-	choose_scene(*argv[1], &win);
+
+    t_scene *scene = parse_file("scenes/demo"); 
+    print_scene(scene);
+    draw_scene(&win,*parse_file("scenes/demo"));
+
 	mlx_hook(win.win_ptr, 17, (1L << 17), free_exit, &win);
 	mlx_hook(win.win_ptr, 12, (1L << 15), expose_hook, &win);
 	mlx_hook(win.win_ptr, 2, (1L << 0), key_hook, &win);
 	mlx_loop(win.mlx_ptr);
+    free(scene);
 	return (0);
 }
