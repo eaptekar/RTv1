@@ -28,4 +28,13 @@ plane
     shine(400)
     color(0xFFFFFF)
 }
+cylinder
+{
+	position(5 5 5)
+    direction(2 2 2)
+    radius(1)
+	reflection(0)
+    shine(400)
+    color(0x00FFFF)
+}
 

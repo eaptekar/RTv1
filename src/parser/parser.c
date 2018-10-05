@@ -45,6 +45,8 @@ char* (*get_reader(char** item_name))(t_scene*, char* cursor)
         RET_READER(light);
     if (CHECK("plane"))
         RET_READER(plane);
+    if (CHECK("cylinder"))
+        RET_READER(cylinder);
     ft_putendl("no reader found"); 
     ERROR(*item_name);
     return NULL;

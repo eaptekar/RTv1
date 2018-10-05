@@ -24,30 +24,10 @@ char *reader_scene(t_scene* scene, char* cursor)
     move_cursor(&cursor);
     set_vval(&(scene->cam), FIND("position"));
     set_vval(&(scene->angle), FIND("direction"));
-
     scene->recursion_depth = ft_atoi(FIND("recursion")); 
     scene->t_min = ft_atoi(FIND("window_x")); 
     scene->t_max = ft_atoi(FIND("window_x")); 
     next_cbr(&cursor);
-    return cursor;
-}
-
-char *reader_sphere(t_scene* scene, char* cursor)
-{
-    char buff[LINE_BUFF_SIZE];
-    t_sphere *sphere = (t_sphere*)malloc(sizeof(sphere) + 1);
-
-    move_cursor(&cursor);
-    set_vval(&(sphere->center), FIND("position"));
-
-    sphere->radius = ft_atof(FIND("radius"));
-    sphere->color = hex_to_int(FIND("color"));
-    sphere->shine = ft_atoi(FIND("shine"));
-    next_cbr(&cursor);
-    ADD_FIGURE(sphere);
-    INC_COUNTER(sphere);
-    INC_FIGURES
-    free(sphere);
     return cursor;
 }
 
@@ -70,6 +50,23 @@ char *reader_light(t_scene* scene, char* cursor)
     return cursor;
 }
 
+char *reader_sphere(t_scene* scene, char* cursor)
+{
+    char buff[LINE_BUFF_SIZE];
+    t_sphere *sphere = (t_sphere*)malloc(sizeof(sphere) + 1);
+
+    move_cursor(&cursor);
+    set_vval(&(sphere->center), FIND("position"));
+    sphere->radius = ft_atof(FIND("radius"));
+    sphere->color = hex_to_int(FIND("color"));
+    sphere->shine = ft_atoi(FIND("shine"));
+    next_cbr(&cursor);
+    ADD_FIGURE(sphere);
+    INC_COUNTER(sphere);
+    INC_FIGURES
+    free(sphere);
+    return cursor;
+}
 char *reader_plane(t_scene* scene, char* cursor)
 {
     char buff[LINE_BUFF_SIZE];
@@ -78,7 +75,6 @@ char *reader_plane(t_scene* scene, char* cursor)
     move_cursor(&cursor);
     set_vval(&(plane->center), FIND("position"));
     set_vval(&(plane->normal), FIND("direction"));
-
     plane->shine = ft_atoi(FIND("shine"));
     plane->reflect = ft_atof(FIND("reflection"));
     plane->color = hex_to_int(FIND("color"));
@@ -90,6 +86,44 @@ char *reader_plane(t_scene* scene, char* cursor)
     return cursor;
 }
 
+char *reader_cylinder(t_scene* scene, char* cursor)
+{
+    char buff[LINE_BUFF_SIZE];
+    t_cylinder *cylinder = (t_cylinder*)malloc(sizeof(cylinder) + 1);
+
+    move_cursor(&cursor);
+    set_vval(&(cylinder->center), FIND("position"));
+    set_vval(&(cylinder->axis), FIND("direction"));
+    cylinder->shine = ft_atoi(FIND("shine"));
+    cylinder->radius = ft_atof(FIND("radius"));
+    cylinder->reflect = ft_atof(FIND("reflection"));
+    cylinder->color = hex_to_int(FIND("color")); 
+    next_cbr(&cursor);
+    ADD_FIGURE(cylinder);
+    INC_COUNTER(cylinder);
+    INC_FIGURES
+    free(cylinder);
+    return cursor;
+}
+
+char *reader_cone(t_scene* scene, char* cursor)
+{
+    char buff[LINE_BUFF_SIZE];
+    t_cone *cone = (t_cone*)malloc(sizeof(t_cone) + 1);
+
+    move_cursor(&cursor);
+    set_vval(&(cone->center), FIND("position"));
+    set_vval(&(cone->axis), FIND("direction"));
+    cone->shine = ft_atoi(FIND("shine"));
+    cone->reflect = ft_atof(FIND("reflection"));
+    cone->color = hex_to_int(FIND("color")); 
+    next_cbr(&cursor);
+    ADD_FIGURE(cone);
+    INC_COUNTER(cone);
+    INC_FIGURES
+    free(cone);
+    return cursor;
+}
 #undef FIND
 #undef ADD_FIGURE
 #undef INC_COUNTER

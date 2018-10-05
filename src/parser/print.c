@@ -2,39 +2,55 @@
 #include "parser.h"
 #include <stdio.h>
 
+#define PRINTI(X) printf("\t\t%s: %d\n", #X, item->X);
+#define PRINTD(X) printf("\t\t%s: %.1f\n", #X, item->X);
+#define PRINT_V(X) printf("\t\t%s: ", #X); print_vector(&(item->X));
+
+#define DISPLAY(X) printf("%s %d\n\n", #X, scene->X##s);\
+for (int i = 0; i < scene->X##s; ++i) \
+{\
+    printf("\t%s %d\n", #X, i);\
+    print_##X(&(scene->X[i]));\
+}
+
 void print_vector(t_vector* t)
 {
     printf("(%.1f, %.1f, %.1f)\n", t->x, t->y, t->z);
 }
 
-void print_sphere(t_sphere *sphere)
+void print_sphere(t_sphere *item)
 {
-    printf("\t\tposition: ");
-    print_vector(&(sphere->center));
-    printf("\t\tradius: %.1f\n", sphere->radius);
-    printf("\t\tshine: %d\n", sphere->shine);
-    printf("\t\tcolor: %d\n", sphere->color);
-    printf("\t\treflection: %.1f\n", sphere->reflect);
+    PRINT_V(center);
+    PRINTD(radius);
+    PRINTI(color);
+    PRINTI(shine);
+    PRINTD(reflect);
 }
 
-void print_plane(t_plane *plane)
+void print_plane(t_plane *item)
 {
-    printf("\t\tcenter: ");
-    print_vector(&(plane->center));
-    printf("\t\tnormal: ");
-    print_vector(&(plane->normal));
-    printf("\t\tshine: %d\n", plane->shine);
-    printf("\t\tcolor: %d\n", plane->color);
-    printf("\t\treflection: %.1f\n", plane->reflect);
+    PRINT_V(center);
+    PRINT_V(normal);
+    PRINTI(color);
+    PRINTI(shine);
+    PRINTD(reflect);
 }
 
-
-void print_light(t_light *light)
+void print_light(t_light *item)
 {
-    printf("\t\ttype: %d\n", light->type);
-    printf("\t\tintensity: %.1f\n", light->intensity);
-    printf("\t\tposition: ");
-    print_vector(&(light->ray));
+    PRINTI(type);
+    PRINTD(intensity);
+    PRINT_V(ray);
+}
+
+void print_cylinder(t_cylinder *item)
+{
+    PRINT_V(center);
+    PRINT_V(axis);
+    PRINTD(radius);
+    PRINTI(color);
+    PRINTI(shine);
+    PRINTD(reflect);
 }
 
 void print_scene(t_scene* scene)
@@ -47,25 +63,14 @@ void print_scene(t_scene* scene)
     printf("recursion: %d\n", scene->recursion_depth);
     printf("size [%.0fx%.0f]\n", scene->t_min, scene->t_max);
     printf("figures %d\n", scene->figures);
-    printf("spheres %d\n\n", scene->spheres);
-    for (int i = 0; i < scene->spheres; ++i)
-    {
-        printf("\tSphere %d\n", i);
-        print_sphere(&(scene->sphere[i]));
-    }
+    DISPLAY(sphere);
+    DISPLAY(plane);
+    DISPLAY(cylinder);
     printf("sources %d\n\n", scene->sources);
     for (int i = 0; i < scene->sources; ++i)
     {
         printf("\tSource %d\n", i);
         print_light(&(scene->light[i]));
     }
-    printf("planes %d\n\n", scene->spheres);
-    for (int i = 0; i < scene->sources; ++i)
-    {
-        printf("\tPlane %d\n", i);
-        print_plane(&(scene->plane[i]));
-    }
-    printf("cylinders %d\n", scene->cylinders);
-    printf("cones %d\n", scene->cones);
 }
 
