@@ -55,6 +55,9 @@ void print_cylinder(t_cylinder *item)
 
 void print_scene(t_scene* scene)
 {
+//    printf("%ld\n", sizeof(double));
+//    printf("%ld\n", sizeof(int));
+    printf("Scene:\n");
     printf("Scene:\n");
     printf("position: ");
     print_vector(&scene->cam);

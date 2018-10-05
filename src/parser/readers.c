@@ -53,7 +53,7 @@ char *reader_light(t_scene* scene, char* cursor)
 char *reader_sphere(t_scene* scene, char* cursor)
 {
     char buff[LINE_BUFF_SIZE];
-    t_sphere *sphere = (t_sphere*)malloc(sizeof(sphere) + 1);
+    t_sphere *sphere = (t_sphere*)malloc(sizeof(t_sphere) + 1);
 
     move_cursor(&cursor);
     set_vval(&(sphere->center), FIND("position"));
@@ -70,7 +70,7 @@ char *reader_sphere(t_scene* scene, char* cursor)
 char *reader_plane(t_scene* scene, char* cursor)
 {
     char buff[LINE_BUFF_SIZE];
-    t_plane *plane = (t_plane*)malloc(sizeof(plane) + 1);
+    t_plane *plane = (t_plane*)malloc(sizeof(t_plane) + 1);
 
     move_cursor(&cursor);
     set_vval(&(plane->center), FIND("position"));
@@ -89,7 +89,7 @@ char *reader_plane(t_scene* scene, char* cursor)
 char *reader_cylinder(t_scene* scene, char* cursor)
 {
     char buff[LINE_BUFF_SIZE];
-    t_cylinder *cylinder = (t_cylinder*)malloc(sizeof(cylinder) + 1);
+    t_cylinder *cylinder = (t_cylinder*)malloc(sizeof(t_cylinder) + 1);
 
     move_cursor(&cursor);
     set_vval(&(cylinder->center), FIND("position"));
