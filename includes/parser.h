@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/10/06 13:41:51 by eaptekar          #+#    #+#             */
+/*   Updated: 2018/10/06 13:49:54 by eaptekar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PARSER_H
-#define PARSER_H
+# define PARSER_H
 
-#include "rtv1.h"
+# include "rtv1.h"
 
-#define DEFAULT_ITEMS 20
-#define FILE_BUFF_SIZE 5000
-#define LINE_BUFF_SIZE 80
+# define DEFAULT_ITEMS 20
+# define FILE_BUFF_SIZE 5000
+# define LINE_BUFF_SIZE 80
 
 t_scene* parse_file(char* filename);
 

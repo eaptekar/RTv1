@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/05 18:27:14 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/23 15:53:21 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/10/06 16:38:08 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int			main(/*int argc, char **argv*/void)
 {
 	t_window	win;
 
-//	if (argc != 2)
-//		ERROR("usage: ./RTv1 <num>");
+	// if (argc != 2)
+	// 	ERROR("usage: ./RTv1 <num>");
 	if (!(win.mlx_ptr = mlx_init()))
 		ERROR(strerror(errno));
 	if (!(win.win_ptr = mlx_new_window(win.mlx_ptr, WIN_W, WIN_H, "RTv1")))
@@ -60,7 +60,7 @@ int			main(/*int argc, char **argv*/void)
 
     t_scene *scene = parse_file("scenes/demo"); 
     print_scene(scene);
-    draw_scene(&win,*parse_file("scenes/demo"));
+    draw_scene(&win, *parse_file("scenes/demo"));
 
 	mlx_hook(win.win_ptr, 17, (1L << 17), free_exit, &win);
 	mlx_hook(win.win_ptr, 12, (1L << 15), expose_hook, &win);

@@ -6,16 +6,15 @@
 #    By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/02 15:17:33 by eaptekar          #+#    #+#              #
-#    Updated: 2018/09/23 15:52:23 by eaptekar         ###   ########.fr        #
+#    Updated: 2018/10/06 16:43:57 by eaptekar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= RTv1
 
 CC		= gcc
-FLAGS	= -Wall -Wextra -Werror -lm -g
-#MLX		= -lmlx -framework OpenGL -framework AppKit
-MLX  = -lmlx -lXext -lX11
+FLAGS	= -Wall -Wextra -Werror -g
+MLX		= -lmlx -framework OpenGL -framework AppKit
 LIBFT	= $(P_LFT)libft.a
 
 SRCS	=	main.c		raytracing.c	initialization.c	intersection.c			parsing.c	\
@@ -43,8 +42,8 @@ $(NAME): $(LIBFT) $(OBJ)
 $(LIBFT):
 	@make -C $(P_LFT)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(I_INC)rtv1.h
-	@mkdir -p $(OBJ_DIR) $(OBJ_DIR)/parser $(OBJ_DIR)/scenes $(OBJ_DIR)/scenes/light
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(I_INC)rtv1.h $(I_INC)parser.h
+	@mkdir -p $(OBJ_DIR) $(OBJ_DIR)/parser
 	@$(CC) $(FLAGS) $< -o $@ -c $(INC)
 	@echo -n █
 

@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/02 15:20:52 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/23 16:00:02 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/10/06 15:18:30 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@
 # include <errno.h>
 
 # include "libft.h"
+# include <stdio.h>
+# include "mlx_keys_macos.h"
+//# include "mlx_keys_linux.h"
 
-//# include "mlx_keys_macos.h"
-# include "mlx_keys_linux.h"
-
-# define WIN_W	520
-# define WIN_H	520
+# define WIN_W	1080
+# define WIN_H	1080
 
 # define VW_W	1.0
 # define VW_H	(VW_W * WIN_H / WIN_W)

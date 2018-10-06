@@ -40,7 +40,10 @@ void print_light(t_light *item)
 {
     PRINTI(type);
     PRINTD(intensity);
-    PRINT_V(ray);
+    if (item->type == 2 || item->type == 3)
+    {
+        PRINT_V(ray);
+    }
 }
 
 void print_cylinder(t_cylinder *item)

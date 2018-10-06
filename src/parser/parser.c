@@ -63,7 +63,15 @@ t_scene* new_scene(void)
     scene->sphere = ALLOC_ARR(sphere);
     scene->cylinder = ALLOC_ARR(cylinder);
     scene->cone = ALLOC_ARR(cone);
-    scene->light = ALLOC_ARR(light);
+    scene->planes = 0;
+    scene->spheres = 0;
+    scene->cylinders = 0;
+    scene->cones = 0;
+    scene->figures = 0;
+    scene->sources = 0;
+    if (!(scene->light = (t_light*)malloc(sizeof(t_light) * DEFAULT_ITEMS)))
+        ERROR(strerror(errno));
+    // printf("light address: %p\n", scene->light);
     return scene;
 }
 

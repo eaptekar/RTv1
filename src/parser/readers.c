@@ -45,7 +45,9 @@ char *reader_light(t_scene* scene, char* cursor)
     if (light->type == 3)
         set_vval(&(light->ray), FIND("direction"));
     next_cbr(&cursor);
+    // printf("scene->light address: %p\nsources: %d\n, item address: %p\n", scene->light, scene->sources, &scene->light[scene->sources]);
     scene->light[scene->sources] = *light;
+    // printf("scene->light address: %p\n", scene->light);
     scene->sources = scene->sources + 1;
     free(light);
     return cursor;
@@ -65,10 +67,11 @@ char *reader_sphere(t_scene* scene, char* cursor)
     next_cbr(&cursor);
     ADD_FIGURE(sphere);
     INC_COUNTER(sphere);
-    INC_FIGURES
+    INC_FIGURES;
     free(sphere);
     return cursor;
 }
+
 char *reader_plane(t_scene* scene, char* cursor)
 {
     char buff[LINE_BUFF_SIZE];
@@ -77,14 +80,14 @@ char *reader_plane(t_scene* scene, char* cursor)
     move_cursor(&cursor);
     set_vval(&(plane->center), FIND("position"));
     set_vval(&(plane->normal), FIND("direction"));
-    GET_NORM(plane, normal)
+    GET_NORM(plane, normal);
     plane->shine = ft_atoi(FIND("shine"));
     plane->reflect = ft_atof(FIND("reflection"));
     plane->color = hex_to_int(FIND("color"));
     next_cbr(&cursor);
-    ADD_FIGURE(plane)
-    INC_COUNTER(plane)
-    INC_FIGURES
+    ADD_FIGURE(plane);
+    INC_COUNTER(plane);
+    INC_FIGURES;
     free(plane);
     return cursor;
 }
@@ -97,7 +100,7 @@ char *reader_cylinder(t_scene* scene, char* cursor)
     move_cursor(&cursor);
     set_vval(&(cylinder->center), FIND("position"));
     set_vval(&(cylinder->axis), FIND("direction"));
-    GET_NORM(cylinder, axis)
+    GET_NORM(cylinder, axis);
     cylinder->shine = ft_atoi(FIND("shine"));
     cylinder->radius = ft_atof(FIND("radius"));
     cylinder->reflect = ft_atof(FIND("reflection"));
@@ -105,7 +108,7 @@ char *reader_cylinder(t_scene* scene, char* cursor)
     next_cbr(&cursor);
     ADD_FIGURE(cylinder);
     INC_COUNTER(cylinder);
-    INC_FIGURES
+    INC_FIGURES;
     free(cylinder);
     return cursor;
 }
@@ -118,14 +121,14 @@ char *reader_cone(t_scene* scene, char* cursor)
     move_cursor(&cursor);
     set_vval(&(cone->center), FIND("position"));
     set_vval(&(cone->axis), FIND("direction"));
-    GET_NORM(cone, axis)
+    GET_NORM(cone, axis);
     cone->shine = ft_atoi(FIND("shine"));
     cone->reflect = ft_atof(FIND("reflection"));
     cone->color = hex_to_int(FIND("color")); 
     next_cbr(&cursor);
     ADD_FIGURE(cone);
     INC_COUNTER(cone);
-    INC_FIGURES
+    INC_FIGURES;
     free(cone);
     return cursor;
 }
