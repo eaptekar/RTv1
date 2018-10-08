@@ -36,16 +36,6 @@ void print_plane(t_plane *item)
     PRINTD(reflect);
 }
 
-void print_light(t_light *item)
-{
-    PRINTI(type);
-    PRINTD(intensity);
-    if (item->type == 2 || item->type == 3)
-    {
-        PRINT_V(ray);
-    }
-}
-
 void print_cylinder(t_cylinder *item)
 {
     PRINT_V(center);
@@ -56,25 +46,35 @@ void print_cylinder(t_cylinder *item)
     PRINTD(reflect);
 }
 
-void print_scene(t_scene* scene)
+void print_cone(t_cone *item)
 {
-    printf("Scene:\n");
-    printf("Scene:\n");
-    printf("position: ");
-    print_vector(&scene->cam);
-    printf("direction: ");
-    print_vector(&scene->angle);
-    printf("recursion: %d\n", scene->recursion_depth);
-    printf("size [%dx%d]\n", scene->win_w, scene->win_h);
-    printf("figures %d\n", scene->figures);
-    DISPLAY(sphere);
-    DISPLAY(plane);
-    DISPLAY(cylinder);
-    printf("sources %d\n\n", scene->sources);
-    for (int i = 0; i < scene->sources; ++i)
-    {
-        printf("\tSource %d\n", i);
-        print_light(&(scene->light[i]));
-    }
+    PRINT_V(center);
+    PRINT_V(axis);
+    PRINTD(k);
+    PRINTI(color);
+    PRINTI(shine);
+    PRINTD(reflect);
 }
 
+void print_scene(t_scene* scene)
+{
+    int sources = 0;
+
+    printf("scene\n\tposition(%.2f %.2f %.2f)\n", scene->cam.x, scene->cam.y, scene->cam.z);
+    printf("\tdirection(%.2f %.2f %.2f)\n", scene->angle.x, scene->angle.y, scene->angle.z);
+    printf("\tsize [%dx%d]\n", scene->win_w, scene->win_h);
+    printf("recursion(%d)\n", scene->recursion_depth);
+    printf("sources %d\nfigures %d\n", scene->sources, scene->figures);
+    while (sources < scene->sources)
+    {
+        printf("light\n");
+        printf("\ttype(%d)\n\tintensity(%.2f)\n", scene->light[sources].type, scene->light[sources].intensity); 
+        if (scene->light[sources].type != 1)
+            printf("\tvector(%.f %.f %.f)\n", scene->light[sources].ray.x, scene->light[sources].ray.y, scene->light[sources].ray.z);
+        sources++;        
+    }
+    DISPLAY(plane);
+    DISPLAY(sphere);
+    DISPLAY(cylinder);
+    DISPLAY(cone); 
+}

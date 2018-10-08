@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 15:13:38 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/23 15:20:45 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/10/08 17:26:17 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ t_quaternion	normal_quat(t_quaternion q)
 {
 	t_quaternion	normal;
 
-	normal = new_quat(q.r, q.i / lenght_quat(q), q.j / lenght_quat(q), q.k / lenght_quat(q));
+	normal = new_quat(q.r, q.i / lenght_quat(q), \
+		q.j / lenght_quat(q), q.k / lenght_quat(q));
 	return (normal);
 }
 
@@ -40,7 +41,8 @@ t_quaternion	inverse_quat(t_quaternion q)
 {
 	t_quaternion	inverse;
 
-	inverse = new_quat(q.r / lenght_quat(q), -q.i / lenght_quat(q), -q.j / lenght_quat(q), -q.k / lenght_quat(q));
+	inverse = new_quat(q.r / lenght_quat(q), -q.i / lenght_quat(q), \
+		-q.j / lenght_quat(q), -q.k / lenght_quat(q));
 	return (inverse);
 }
 

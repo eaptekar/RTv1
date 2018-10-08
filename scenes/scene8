@@ -1,0 +1,83 @@
+scene
+{
+	position(0 11 0)
+	direction(37 -40 35)
+	window_x(1920)
+	window_y(1080)
+	recursion(6)
+}
+light
+{
+	type(1)
+	intensity(0.01)
+}
+light
+{
+	type(2)
+	position(0 20 75)
+	intensity(1.1)
+}
+plane
+{
+	position(0 0 100)
+	direction(0 0 99)
+	shine(512)
+	reflection(1)
+	color(0xFFFFFF)
+}
+plane
+{
+	position(0 -10 0)
+	direction(0 -9 0)
+	shine(512)
+	reflection(1)
+	color(0xFFFFFF)
+}
+plane
+{
+	position(0 30 0)
+	direction(0 29 0)
+	shine(512)
+	reflection(1)
+	color(0xFFFFFF)
+}
+plane
+{
+	position(-25 0 0)
+	direction(-24 0 0)
+	shine(512)
+	reflection(1)
+	color(0xFFFFFF)
+}
+plane
+{
+	position(25 0 0)
+	direction(24 0 0)
+	shine(512)
+	reflection(1)
+	color(0xFFFFFF)
+}
+plane
+{
+	position(0 0 -100)
+	direction(0 0 -99)
+	shine(512)
+	reflection(1)
+	color(0xFFFFFF)
+}
+sphere
+{
+	position(0 0 10)
+	radius(3)
+	shine(1000)
+	reflection(0.85)
+	color(0x808080)
+}
+sphere
+{
+	position(0 0 -10)
+	radius(3)
+	shine(1000)
+	reflection(0.85)
+	color(0x808080)
+}

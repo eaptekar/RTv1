@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 16:00:44 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/08/07 14:34:03 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/10/08 17:24:03 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ static int		nibble_to_num(const char nibble)
 	return (0);
 }
 
-int		hex_to_int(const char *str)
+int				hex_to_int(const char *str)
 {
-	int	output;
-	int			digit;
+	int		output;
+	int		digit;
 
 	output = 0;
 	digit = nibble_to_num(*str);

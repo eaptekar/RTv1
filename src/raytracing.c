@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/18 15:10:48 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/21 16:34:14 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/10/08 13:36:50 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,15 +131,17 @@ void		draw_scene(t_window *win, t_scene scene)
 
 	scene.t_min = T_MIN;
 	scene.t_max = T_MAX;
-	y = -(WIN_H / 2);
-	while (y < (WIN_H / 2))
+	win->win_w = scene.win_w;
+	win->win_h = scene.win_h;
+	y = -(scene.win_h / 2);
+	while (y < (scene.win_h / 2))
 	{
-		x = -(WIN_W / 2);
-		while (x < (WIN_W / 2))
+		x = -(scene.win_w / 2);
+		while (x < (scene.win_w / 2))
 		{
-			ray = rotate_camera(get_viewport(x, y), scene.angle);
+			ray = rotate_camera(get_viewport(x, y, win->win_w), scene.angle);
 			color = raytrace(scene.cam, ray, scene, scene.recursion_depth);
-			pixel_to_image(win, WIN_W / 2 + x, WIN_H / 2 - y, color);
+			pixel_to_image(win, win->win_w / 2 + x, win->win_h / 2 - y, color);
 			x++;
 		}
 		y++;

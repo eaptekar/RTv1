@@ -6,7 +6,7 @@
 #    By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/30 13:42:15 by eaptekar          #+#    #+#              #
-#    Updated: 2018/09/18 15:38:42 by eaptekar         ###   ########.fr        #
+#    Updated: 2018/10/08 19:47:28 by eaptekar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRCS = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 	  ft_putendl_fd.c ft_putnbr_fd.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c \
 	  ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_range.c ft_sqrt.c ft_power.c \
 	  ft_abs.c ft_swap.c get_next_line.c ft_putendl_exit.c hex_to_int.c \
-	  deg_to_rad.c ft_atof.c ft_isspase.c
+	  deg_to_rad.c ft_atof.c ft_isspace.c ft_iscolor.c \
 
 SRC_DIR = src/
 OBJ_DIR	= obj/

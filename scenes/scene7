@@ -1,0 +1,166 @@
+scene
+{
+	position(0 0 0)
+	direction(0 0 0)
+	window_x(1080)
+	window_y(1080)
+	recursion(3)
+}
+light
+{
+	type(1)
+	intensity(0.2)
+}
+light
+{
+	type(2)
+	position(3 1 0)
+	intensity(0.4)
+}
+light
+{
+	type(2)
+	position(-5 1.2 0)
+	intensity(0.4)
+}
+plane
+{
+	position(0 -1 10)
+	direction(0 0 10)
+	shine(1000)
+	reflection(0)
+	color(0xACFD69)
+}
+plane
+{
+	position(0 2 10)
+	direction(0 1 10)
+	shine(1000)
+	reflection(0)
+	color(0x808080)
+}
+plane
+{
+	position(0 0 15)
+	direction(0 0 14)
+	shine(1000)
+	reflection(0)
+	color(0x4F4FFD)
+}
+sphere
+{
+	position(2 -1 6)
+	radius(0.5)
+	shine(1000)
+	reflection(0)
+	color(0x80DDFF)
+}
+sphere
+{
+	position(-2 -1 6)
+	radius(0.5)
+	shine(1000)
+	reflection(0)
+	color(0x80DDFF)
+}
+sphere
+{
+	position(2 -1 10)
+	radius(0.5)
+	shine(1000)
+	reflection(0)
+	color(0x80DDFF)
+}
+sphere
+{
+	position(-2 -1 10)
+	radius(0.5)
+	shine(1000)
+	reflection(0)
+	color(0x80DDFF)
+}
+sphere
+{
+	position(2 2 6)
+	radius(0.5)
+	shine(1000)
+	reflection(0)
+	color(0x80DDFF)
+}
+sphere
+{
+	position(-2 2 6)
+	radius(0.5)
+	shine(1000)
+	reflection(0)
+	color(0x80DDFF)
+}
+sphere
+{
+	position(2 2 10)
+	radius(0.5)
+	shine(1000)
+	reflection(0)
+	color(0x80DDFF)
+}
+sphere
+{
+	position(-2 2 10)
+	radius(0.5)
+	shine(1000)
+	reflection(0)
+	color(0x80DDFF)
+}
+sphere
+{
+	position(0 -0.5 6)
+	radius(0.5)
+	shine(-1)
+	reflection(1)
+	color(0x80DDFF)
+}
+cylinder
+{
+	position(2 0 6)
+	direction(2 1 6)
+	radius(0.3)
+	shine(1000)
+	reflection(0)
+	color(0x80DDFF)
+}
+cylinder
+{
+	position(-2 0 6)
+	direction(-2 1 6)
+	radius(0.3)
+	shine(1000)
+	reflection(0)
+	color(0x80DDFF)
+}
+cylinder
+{
+	position(2 0 10)
+	direction(2 1 10)
+	radius(0.3)
+	shine(1000)
+	reflection(0)
+	color(0x80DDFF)
+}
+cylinder
+{
+	position(-2 0 10)
+	direction(-2 1 10)
+	radius(0.3)
+	shine(1000)
+	reflection(0)
+	color(0x80DDFF)
+}
+cone
+{
+	position(3 1 -2)
+	direction(3 0 -2)
+	angle(0.4)
+	shine(-1)
+	reflection(0)
+	color(0xFA78D0)
+}

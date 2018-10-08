@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/30 13:33:02 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/18 15:39:45 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/10/08 19:47:16 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,10 @@ char			*ft_strnstr(const char *src, const char *to_find, size_t len);
 int				ft_strcmp(const char *s1, const char *s2);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_atoi(const char *str);
-double          ft_atof(const char *str);
-int             ft_isspase(char c);
+double			ft_atof(const char *str);
+int				ft_isspace(char c);
 int				ft_isalpha(int c);
+int				ft_iscolor(char *str);
 int				ft_isdigit(int c);
 int				ft_isalnum(int c);
 int				ft_isascii(int c);
@@ -104,7 +105,7 @@ int				ft_abs(int nb);
 void			ft_swap(void **a, void **b);
 int				get_next_line(const int fd, char **line);
 void			ft_putendl_exit(const char *str, int exit_code);
-int		hex_to_int(const char *str);
+int				hex_to_int(const char *str);
 double			deg_to_rad(double degree);
 
 #endif
