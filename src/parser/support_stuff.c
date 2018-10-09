@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 14:44:09 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/10/08 17:03:10 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/10/09 18:59:46 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,17 @@ void	cut_br(char *line)
 
 void	cut_to_num(char *buff, char *line)
 {
-	while (*line && *line != ' ')
-		*buff++ = *line++;
-	*buff = '\0';
+	int		i;
+
+	i = 0;
+	while (line[i] && line[i] != ' ' && i < 10)
+	{
+		buff[i] = line[i];
+		i++;
+	}
+	if ((i == 10) && (line[i] || line[i] != ' '))
+		ERROR("smth wrong with scene parameters or they too big(small)");
+	buff[i] = '\0';
 }
 
 void	move_cursor(char **cursor)

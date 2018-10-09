@@ -1,0 +1,22 @@
+scene
+{
+    position(6 5 -4)
+    direction(15 -15 0)
+    window_x(1080)
+    window_y(1080)
+    recursion(3)
+}
+light
+{
+    type(2)
+    position(3 5 5)
+    intensity(0.7)
+}
+plane
+{
+    position(-11 0 0)
+    direction(-10 0 kek
+    shine(-1)
+    reflection(0)
+    color(0xF3F7C7)
+}

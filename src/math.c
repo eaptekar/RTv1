@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/05 20:55:10 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/09/18 20:45:42 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/10/09 19:24:43 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ t_vector	get_normal(t_vector v)
 	double		lenght;
 
 	lenght = sqrt(dot(v, v));
+	if (lenght == 0)
+		ERROR("null normal vector");
 	res.x = v.x / lenght;
 	res.y = v.y / lenght;
 	res.z = v.z / lenght;

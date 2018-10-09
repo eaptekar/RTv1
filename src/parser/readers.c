@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 12:32:26 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/10/08 18:08:59 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/10/09 18:32:38 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ char	*reader_scene(t_scene *scene, char *cursor)
 	move_cursor(&cursor);
 	set_vval(&(scene->cam), FIND("position"));
 	set_vval(&(scene->angle), FIND("direction"));
-	scene->recursion_depth = ft_atoi(FIND("recursion"));
 	scene->win_w = ft_atoi(FIND("window_x"));
 	scene->win_h = ft_atoi(FIND("window_y"));
+	scene->recursion_depth = ft_atoi(FIND("recursion"));
 	next_cbr(&cursor);
 	return (cursor);
 }
@@ -43,6 +43,8 @@ char	*reader_light(t_scene *scene, char *cursor)
 	char	buff[LINE_BUFF_SIZE];
 	t_light	*light;
 
+	if (scene->sources >= DEFAULT_ITEMS)
+		ERROR("number of sources bigger then DEFAULT_ITEMS");
 	if (!(light = (t_light*)malloc(sizeof(t_light) + 1)))
 		ERROR("malloc error: light");
 	move_cursor(&cursor);

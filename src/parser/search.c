@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 14:44:21 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/10/08 18:35:45 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/10/09 18:59:31 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_vector	*get_vector(char *line)
 	double		*axis;
 
 	if (!(vector = (t_vector*)malloc(sizeof(t_vector) + 1)))
-		ERROR("malloc error: vector in search.c");
+		ERROR("malloc error: get_vector");
 	axis = (double*)vector;
 	while (*line)
 	{
