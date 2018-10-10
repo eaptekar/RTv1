@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 15:09:39 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/10/09 18:19:56 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/10/10 14:04:11 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ t_scene		*new_scene(void)
 	return (scene);
 }
 
+
 char		*(*get_reader(char **item_name))(t_scene *scene, char *cursor)
 {
 	while (ft_isspace(**item_name))
@@ -84,6 +85,7 @@ t_scene		*parse_file(char *filename)
 	if (!(*cursor))
 		ERROR("empty file");
 	scene = new_scene();
+
 	while (*cursor)
 	{
 		cursor = get_reader(&cursor)(scene, cursor);
@@ -91,5 +93,7 @@ t_scene		*parse_file(char *filename)
 			++cursor;
 	}
 	close(fd);
+	if (!scene->win_w || !scene->figures || !scene->sources)
+		ERROR("scene objects missing");
 	return (scene);
 }

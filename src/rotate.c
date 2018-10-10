@@ -6,13 +6,13 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/23 15:18:11 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/10/08 17:25:02 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/10/10 17:48:33 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static t_vector	set_point(double x, double y, double z)
+t_vector		set_point(double x, double y, double z)
 {
 	t_vector	vec;
 

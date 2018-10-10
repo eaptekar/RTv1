@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/02 15:20:52 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/10/08 14:37:24 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/10/10 15:26:28 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,7 @@ t_vector		sub(t_vector v1, t_vector v2);
 t_vector		add(t_vector v1, t_vector v2);
 t_vector		mult(double num, t_vector v);
 t_vector		get_normal(t_vector v);
+t_vector		set_point(double x, double y, double z);
 
 t_vector		rotate_camera(t_vector vec, t_vector angle);
 t_quaternion	new_quat(double r, double i, double j, double k);

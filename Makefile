@@ -6,7 +6,7 @@
 #    By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/02 15:17:33 by eaptekar          #+#    #+#              #
-#    Updated: 2018/10/08 16:58:45 by eaptekar         ###   ########.fr        #
+#    Updated: 2018/10/10 19:27:49 by eaptekar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS	=	main.c		raytracing.c		intersection.c		quaternion.c	\
 			math.c		rotate.c			color.c				hooks.c			\
 			parser/parser.c		parser/readers.c	parser/support_stuff.c		\
 			parser/search.c		parser/print.c		parser/figure_readers.c		\
+			parser/validator.c													\
 
 SRC_DIR	= src/
 OBJ_DIR	= obj/

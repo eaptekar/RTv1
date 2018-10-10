@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 13:41:51 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/10/08 17:04:04 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/10/10 19:27:44 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # define GET_NORM(X, Y)		X->Y = get_normal(sub(X->Y, X->center));
 
 void		get_line(char *line, char *cursor);
-void		cut_to_num(char *buff, char *line);
-void		cut_br(char *line);
+int			cut_to_num(char *buff, char *line);
+int			cut_br(char *line, char *value);
 void		move_cursor(char **cursor);
 void		next_cbr(char **cursor);
 
@@ -37,6 +37,11 @@ t_vector	*get_vector(char *line);
 
 t_scene		*new_scene(void);
 void		set_vval(t_vector *field, char *buff);
+void		check_vector(t_vector vec, char *value);
+void		check_plane(t_plane **plane);
+void		check_sphere(t_sphere **sphere);
+void		check_cylinder(t_cylinder **cylinder);
+void		check_cone(t_cone **cone);
 
 char		*reader_scene(t_scene *scene, char *cursor);
 char		*reader_sphere(t_scene *scene, char *cursor);
