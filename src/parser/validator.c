@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:50:03 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/10/10 19:35:52 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/10/10 20:16:46 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	check_sphere(t_sphere **sphere)
 		(*sphere)->shine = 5;
 	else if ((*sphere)->shine > 1000)
 		(*sphere)->shine = 1000;
-		if ((*sphere)->reflect < 0)
+	if ((*sphere)->reflect < 0)
 		(*sphere)->reflect = 0;
 	else if ((*sphere)->reflect > 1)
 		(*sphere)->reflect = 1;
@@ -77,7 +77,7 @@ void	check_cylinder(t_cylinder **cylinder)
 		(*cylinder)->shine = 5;
 	else if ((*cylinder)->shine > 1000)
 		(*cylinder)->shine = 1000;
-		if ((*cylinder)->reflect < 0)
+	if ((*cylinder)->reflect < 0)
 		(*cylinder)->reflect = 0;
 	else if ((*cylinder)->reflect > 1)
 		(*cylinder)->reflect = 1;
@@ -96,7 +96,7 @@ void	check_cone(t_cone **cone)
 		(*cone)->shine = 5;
 	else if ((*cone)->shine > 1000)
 		(*cone)->shine = 1000;
-		if ((*cone)->reflect < 0)
+	if ((*cone)->reflect < 0)
 		(*cone)->reflect = 0;
 	else if ((*cone)->reflect > 1)
 		(*cone)->reflect = 1;

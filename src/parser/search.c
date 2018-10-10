@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 14:44:21 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/10/10 19:27:43 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/10/10 20:15:28 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,6 @@ char		*find_value(char *cursor, char *buff, char *value)
 		cursor += ft_strlen(line);
 	}
 	if (!(*cursor) || *cursor == '}')
-	{
-		ft_putstr(value);
-		ERROR(" : not found");
-	}
+		ERROR("object parameter is missing");
 	return (start);
 }

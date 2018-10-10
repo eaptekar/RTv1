@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/02 15:20:52 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/10/10 15:26:28 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/10/10 19:59:29 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 
 # include "libft.h"
 # include "mlx_keys_macos.h"
-
-# include <stdio.h> //
 
 # define DIST	1.0
 

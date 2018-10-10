@@ -6,12 +6,11 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/05 18:27:14 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/10/08 17:30:33 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/10/10 20:00:27 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
-#include "parser.h" //
 
 t_vector	get_viewport(int x, int y, int width)
 {
@@ -50,7 +49,6 @@ int			main(int argc, char **argv)
 	if (argc != 2)
 		ERROR("usage: ./RTv1 <scene_file>");
 	scene = parse_file(argv[1]);
-	print_scene(scene);
 	if (!(win.mlx_ptr = mlx_init()))
 		ERROR(strerror(errno));
 	if (!(win.win_ptr = mlx_new_window(win.mlx_ptr, scene->win_w, \

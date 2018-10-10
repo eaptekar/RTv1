@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 14:44:09 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/10/10 17:49:27 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/10/10 20:20:24 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		cut_br(char *line, char *value)
 		ERROR("( expected");
 	while (*(++line) != ')')
 	{
-		if(!*line)
+		if (!*line)
 			return (1);
 		if (state && *line != ' ' && *line != '-' && *line != '.' && \
 			!ft_isdigit(*line))
@@ -41,8 +41,7 @@ int		cut_br(char *line, char *value)
 	return (0);
 }
 
-
-int	cut_to_num(char *buff, char *line)
+int		cut_to_num(char *buff, char *line)
 {
 	int		i;
 	int		initial_shift;
@@ -77,10 +76,11 @@ void	move_cursor(char **cursor)
 
 void	next_cbr(char **cursor)
 {
-	while (**cursor != '}'){
-                if (!**cursor )
-                    ERROR("[next_cbr] block } expected");
+	while (**cursor != '}')
+	{
+		if (!**cursor)
+			ERROR("[next_cbr] block } expected");
 		++(*cursor);
-        }
+	}
 	++(*cursor);
 }

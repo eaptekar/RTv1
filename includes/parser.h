@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 13:41:51 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/10/10 19:27:44 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/10/10 19:54:14 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,6 @@ int			cut_to_num(char *buff, char *line);
 int			cut_br(char *line, char *value);
 void		move_cursor(char **cursor);
 void		next_cbr(char **cursor);
-
-//print
-void		print_vector(t_vector *t); //
-void		print_scene(t_scene *scene); //
 
 char		*find_value(char *cursor, char *buff, char *value);
 t_vector	*get_vector(char *line);
