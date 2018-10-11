@@ -6,7 +6,7 @@
 /*   By: eaptekar <eaptekar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 12:32:26 by eaptekar          #+#    #+#             */
-/*   Updated: 2018/10/10 19:38:56 by eaptekar         ###   ########.fr       */
+/*   Updated: 2018/10/11 19:12:45 by eaptekar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	check_light(t_light **light)
 {
 	if ((*light)->type < 1 || (*light)->type > 3)
 		ERROR("invalid light type");
-	if ((*light)->intensity < 0)
-		(*light)->intensity = 0;
-	else if ((*light)->intensity > 20)
-		(*light)->intensity = 20;
+	if ((*light)->intensity < 0.01)
+		(*light)->intensity = 0.01;
+	else if ((*light)->intensity > 5)
+		(*light)->intensity = 5;
 	if ((*light)->type == 2)
 		check_vector((*light)->ray, "light->position");
 	if ((*light)->type == 3)
